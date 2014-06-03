@@ -2,7 +2,7 @@ from bytes import Bytes
 
 print "Hello World"
 
-bytes = Bytes(4, 128)
+bytes = Bytes(20, 0x030c5e)
 
 file = open("test.txt", "wb")
 
