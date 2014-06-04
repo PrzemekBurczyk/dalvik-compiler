@@ -3,8 +3,10 @@ Created on 3 cze 2014
 
 @author: Przemek
 '''
+from src.parser.mesaurable import Mesaurable
 
-class TypeIdItemSection(object):
+
+class TypeIdItemSection(Mesaurable):
     '''
     classdocs
     '''
@@ -14,6 +16,4 @@ class TypeIdItemSection(object):
         '''
         Constructor
         '''
-        
-        # array of TypeIdItem
-        self.data = []
+        Mesaurable.__init__(self)

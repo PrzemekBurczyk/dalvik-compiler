@@ -5,9 +5,11 @@ Created on 3 cze 2014
 '''
 import hashlib
 
-from src.parser.bytes import Bytes
+from src.items.bytes import Bytes
+from src.parser.mesaurable import Mesaurable
 
-class HeaderItem(object):
+
+class HeaderItem(Mesaurable):
     '''
     classdocs
     '''
@@ -16,9 +18,11 @@ class HeaderItem(object):
         '''
         Constructor
         '''
+        Mesaurable.__init__(self)
+        
         self.magic = Bytes(8)
         self.checksum = Bytes(4)
-        self.signature = Bytes(20)
+        self.signature = Bytes.getBytesArray(20)
         self.file_size = Bytes(4)
         self.header_size = Bytes(4)
         self.endian_tag = Bytes(4)
@@ -49,6 +53,3 @@ class HeaderItem(object):
         sha1 = hashlib.sha1()
         sha1.update(data)
         return hash.digest()
-    
-    def getItemOffset(self, index):
-        return sum([x.bytesCount for x in self.data[:index]])

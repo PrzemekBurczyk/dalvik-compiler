@@ -3,9 +3,11 @@ Created on 3 cze 2014
 
 @author: Przemek
 '''
-from items.header_item import HeaderItem
+from src.items.header_item import HeaderItem
+from src.parser.mesaurable import Mesaurable
 
-class HeaderItemSection(object):
+
+class HeaderItemSection(Mesaurable):
     '''
     classdocs
     '''
@@ -15,4 +17,6 @@ class HeaderItemSection(object):
         '''
         Constructor
         '''
+        Mesaurable.__init__(self)
+        
         self.headerItem = HeaderItem()

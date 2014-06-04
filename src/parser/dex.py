@@ -7,9 +7,10 @@ from sections.header_item_section import HeaderItemSection
 from sections.proto_id_item_section import ProtoIdItemSection
 from sections.string_id_item_section import StringIdItemSection
 from sections.type_id_item_section import TypeIdItemSection
+from src.parser.mesaurable import Mesaurable
 
 
-class Dex(object):
+class Dex(Mesaurable):
     '''
     classdocs
     '''
@@ -18,6 +19,8 @@ class Dex(object):
         '''
         Constructor
         '''
+        Mesaurable.__init__(self)
+        
         self.header_item_section = HeaderItemSection()
         self.string_id_item_section = StringIdItemSection()
         self.type_id_item_section = TypeIdItemSection()
