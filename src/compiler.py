@@ -1,12 +1,15 @@
 from src.items.bytes import Bytes
 from src.items.header_item import HeaderItem
+from src.items.string_id_item import StringIdItem
 
 
 bytes = Bytes(4, 0x12345678)
+
+print len(bytes._data)
   
 file = open("test.txt", "wb")
   
-file.write(bytes.data)
+file.write(bytes._data)
 
 # arr = [Bytes(1, 3), Bytes(1, 64)]
 # for x in arr: 
@@ -16,3 +19,31 @@ file.write(bytes.data)
 header = HeaderItem()
 print header.getItemOffset(5)
 print header.getBytesCount()
+
+header.signature.append(Bytes(1))
+
+print header.getItemOffset(5)
+print header.getBytesCount()
+
+print header.data_off.value
+print header.data_off.bytesCount
+print header.data_off.data
+
+header.data_off.bytesCount = 8
+
+print header.data_off.value
+print header.data_off.bytesCount
+print header.data_off.data
+
+header.data_off.bytesCount = 4
+header.data_off.value = 0x12345678
+
+print header.data_off.value
+print header.data_off.bytesCount
+print header.data_off.data
+
+stringId = StringIdItem()
+print
+print stringId.getBytesCount()
+print stringId.getItemOffset(0)
+

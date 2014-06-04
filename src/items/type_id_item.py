@@ -19,4 +19,4 @@ class TypeIdItem(Mesaurable):
         '''
         Mesaurable.__init__(self)
         
-        self.data = Bytes(4)
+        self._data = Bytes(4)
