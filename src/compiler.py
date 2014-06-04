@@ -3,10 +3,8 @@ from src.items.header_item import HeaderItem
 from src.items.string_id_item import StringIdItem
 
 
-bytes = Bytes(4, 0x12345678)
+bytes = Bytes(None, 4, 0x12345678)
 
-print len(bytes._data)
-  
 file = open("test.txt", "wb")
   
 file.write(bytes._data)
@@ -16,11 +14,11 @@ file.write(bytes._data)
 #     print x.data
 #     file.write(x.data) 
 
-header = HeaderItem()
+header = HeaderItem(None)
 print header.getItemOffset(5)
 print header.getBytesCount()
 
-header.signature.append(Bytes(1))
+header.signature._data.append(Bytes(None, 1))
 
 print header.getItemOffset(5)
 print header.getBytesCount()
@@ -42,7 +40,7 @@ print header.data_off.value
 print header.data_off.bytesCount
 print header.data_off.data
 
-stringId = StringIdItem()
+stringId = StringIdItem(None)
 print
 print stringId.getBytesCount()
 print stringId.getItemOffset(0)

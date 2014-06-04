@@ -12,9 +12,9 @@ class StringIdItemSection(Mesaurable):
     '''
 
 
-    def __init__(self):
+    def __init__(self, parent):
         '''
         Constructor
         '''
-        Mesaurable.__init__(self)
+        Mesaurable.__init__(self, parent)
         

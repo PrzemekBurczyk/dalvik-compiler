@@ -19,9 +19,9 @@ class Dex(Mesaurable):
         '''
         Constructor
         '''
-        Mesaurable.__init__(self)
+        Mesaurable.__init__(self, None) # Dex is the root
         
-        self.header_item_section = HeaderItemSection()
-        self.string_id_item_section = StringIdItemSection()
-        self.type_id_item_section = TypeIdItemSection()
-        self.proto_id_item_section = ProtoIdItemSection()
+        self.header_item_section = HeaderItemSection(self)
+        self.string_id_item_section = StringIdItemSection(self)
+        self.type_id_item_section = TypeIdItemSection(self)
+        self.proto_id_item_section = ProtoIdItemSection(self)

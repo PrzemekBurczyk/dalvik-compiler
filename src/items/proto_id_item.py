@@ -13,12 +13,12 @@ class ProtoIdItem(Mesaurable):
     '''
 
 
-    def __init__(self):
+    def __init__(self, parent):
         '''
         Constructor
         '''
-        Mesaurable.__init__(self)
+        Mesaurable.__init__(self, parent)
         
-        self.shorty_idx = Bytes(4)
-        self.return_type_idx = Bytes(4)
-        self.parameters_off = Bytes(4)
+        self.shorty_idx = Bytes(self, 4)
+        self.return_type_idx = Bytes(self, 4)
+        self.parameters_off = Bytes(self, 4)

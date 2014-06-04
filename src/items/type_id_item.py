@@ -13,10 +13,10 @@ class TypeIdItem(Mesaurable):
     '''
 
 
-    def __init__(self):
+    def __init__(self, parent):
         '''
         Constructor
         '''
-        Mesaurable.__init__(self)
+        Mesaurable.__init__(self, parent)
         
-        self._data = Bytes(4)
+        self._data = Bytes(self, 4)
