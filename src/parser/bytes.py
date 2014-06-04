@@ -8,7 +8,6 @@ class Bytes(object):
         H 2 bytes unsigned
         I 4 bytes unsigned
         Q 8 bytes unsigned
-        P void *
         '''
         self.bytesCountMap = {1: 'B', 2: 'H', 4: 'I', 8: 'Q'}
         self.bytesCount = bytesCount
