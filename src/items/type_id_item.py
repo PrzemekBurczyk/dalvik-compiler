@@ -4,10 +4,10 @@ Created on 3 cze 2014
 @author: Przemek
 '''
 from src.items.bytes import Bytes
-from src.parser.mesaurable import Mesaurable
+from src.parser.measurable import Measurable
 
 
-class TypeIdItem(Mesaurable):
+class TypeIdItem(Measurable):
     '''
     classdocs
     '''
@@ -17,6 +17,6 @@ class TypeIdItem(Mesaurable):
         '''
         Constructor
         '''
-        Mesaurable.__init__(self, parent)
+        Measurable.__init__(self, parent)
         
         self._data = Bytes(self, 4)

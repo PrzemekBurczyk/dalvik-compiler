@@ -7,10 +7,10 @@ from sections.header_item_section import HeaderItemSection
 from sections.proto_id_item_section import ProtoIdItemSection
 from sections.string_id_item_section import StringIdItemSection
 from sections.type_id_item_section import TypeIdItemSection
-from src.parser.mesaurable import Mesaurable
+from src.parser.measurable import Measurable
 
 
-class Dex(Mesaurable):
+class Dex(Measurable):
     '''
     classdocs
     '''
@@ -19,7 +19,7 @@ class Dex(Mesaurable):
         '''
         Constructor
         '''
-        Mesaurable.__init__(self, None) # Dex is the root
+        Measurable.__init__(self, None) # Dex is the root
         
         self.header_item_section = HeaderItemSection(self)
         self.string_id_item_section = StringIdItemSection(self)

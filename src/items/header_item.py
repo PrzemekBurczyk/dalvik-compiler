@@ -7,10 +7,10 @@ import hashlib
 
 from src.items.bytes import Bytes
 from src.items.bytes_array import BytesArray
-from src.parser.mesaurable import Mesaurable
+from src.parser.measurable import Measurable
 
 
-class HeaderItem(Mesaurable):
+class HeaderItem(Measurable):
     '''
     classdocs
     '''
@@ -19,7 +19,7 @@ class HeaderItem(Mesaurable):
         '''
         Constructor
         '''
-        Mesaurable.__init__(self, parent)
+        Measurable.__init__(self, parent)
         
         self.magic = Bytes(self, 8)
         self.checksum = Bytes(self, 4)

@@ -4,10 +4,9 @@ Created on 3 cze 2014
 @author: Przemek
 '''
 from src.items.header_item import HeaderItem
-from src.parser.mesaurable import Mesaurable
+from src.parser.measurable import Measurable
 
-
-class HeaderItemSection(Mesaurable):
+class HeaderItemSection(Measurable):
     '''
     classdocs
     '''
@@ -17,6 +16,6 @@ class HeaderItemSection(Mesaurable):
         '''
         Constructor
         '''
-        Mesaurable.__init__(self, parent)
+        Measurable.__init__(self, parent)
         
         self.headerItem = HeaderItem(self)

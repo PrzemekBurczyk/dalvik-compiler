@@ -6,7 +6,7 @@ Created on 4 cze 2014
 
 import src.items
 
-class Mesaurable(object):
+class Measurable(object):
     '''
     classdocs
     '''
@@ -25,10 +25,10 @@ class Mesaurable(object):
     def getItemOffset(self, index):
         if isinstance(self, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray):
             raise BytesHaveNoItems()
-        return 0 if isinstance(self._data, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray) else sum([x.getBytesCount() if isinstance(x, Mesaurable) else len(x) for x in self._data[:index]])
+        return 0 if isinstance(self._data, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray) else sum([x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data[:index]])
     
     def getBytesCount(self):
-        return len(self._data._data) if isinstance(self._data, src.items.bytes.Bytes) else sum(x.getBytesCount() if isinstance(x, Mesaurable) else len(x) for x in self._data)
+        return len(self._data._data) if isinstance(self._data, src.items.bytes.Bytes) else sum(x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data)
     
 class BytesHaveNoItems(Exception):
     

@@ -4,10 +4,10 @@ Created on 3 cze 2014
 @author: Przemek
 '''
 from src.items.bytes import Bytes
-from src.parser.mesaurable import Mesaurable
+from src.parser.measurable import Measurable
 
 
-class ProtoIdItem(Mesaurable):
+class ProtoIdItem(Measurable):
     '''
     classdocs
     '''
@@ -17,7 +17,7 @@ class ProtoIdItem(Mesaurable):
         '''
         Constructor
         '''
-        Mesaurable.__init__(self, parent)
+        Measurable.__init__(self, parent)
         
         self.shorty_idx = Bytes(self, 4)
         self.return_type_idx = Bytes(self, 4)
