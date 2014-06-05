@@ -18,4 +18,3 @@ class HeaderItemSection(Measurable):
         '''
         Measurable.__init__(self, parent)
         
-        self.headerItem = HeaderItem(self)

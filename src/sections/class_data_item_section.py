@@ -19,6 +19,13 @@ class ClassDataItemSection(Measurable):
         '''
         Measurable.__init__(self, parent)
         
-        #are those two in section or in item?
+        # are those two in section or in item?
         self.zeros = Bytes(self, 2)
         self.size = Bytes(self, 4)
+        
+    @property
+    def data(self):
+        '''
+        We shall watch out to keep additional fields at the end of _data probably
+        '''
+        return self._data + [self.zeros, self.size]

@@ -6,7 +6,7 @@ Created on 5 cze 2014
 
 class DebugInfoItemSection(object):
     '''
-    classdocs
+    Is it needed?
     '''
 
 
