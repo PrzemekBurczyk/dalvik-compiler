@@ -27,6 +27,9 @@ class ClassDataItem(Measurable):
         self.instanceFields = []
         self.directMethods = []
         self.virtualMethods = []
+        
+        self._data = [self.staticFieldsSize, self.instanceFieldsSize, self.directMethodsSize, self.virtualMethodsSize, 
+                      self.staticFields, self.instanceFields, self.directMethods, self.virtualMethods]
     
 class Member(Measurable):    
 
@@ -34,6 +37,8 @@ class Member(Measurable):
         Measurable.__init__(self, parent)
         self.fieldIdxDiff = Bytes(self, 1)
         self.accessFlags = Bytes(self, 1)
+        
+        self._data = [self.fieldIdxDiff, self.accessFlags]
         
 class StaticField(Member):
     
@@ -54,7 +59,9 @@ class Method(Member):
         probably we will need to hardcode it as BytesArray
         '''
         Member.__init__(self, parent)
-        self.codeOff = Bytes(self, 2)        
+        self.codeOff = Bytes(self, 2)  
+        
+        self._data.append(self.codeOff)      
         
 class DirectMethod(Method):
     
