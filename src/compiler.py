@@ -3,7 +3,7 @@ from src.items.header_item import HeaderItem
 from src.items.string_id_item import StringIdItem
 
 
-bytes = Bytes(None, 4, 0x12345678)
+bytes = Bytes(None, 2, 0x278)
 
 file = open("test.txt", "wb")
   
