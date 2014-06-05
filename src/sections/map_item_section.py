@@ -4,10 +4,9 @@ Created on 5 cze 2014
 @author: Przemek
 '''
 
-from src.parser.mesaurable import Mesaurable
+from src.parser.measurable import Measurable
 
-
-class MapItemSection(Mesaurable):
+class MapItemSection(Measurable):
     '''
     classdocs
     '''
@@ -16,5 +15,4 @@ class MapItemSection(Mesaurable):
         '''
         Constructor
         '''
-        
-        Mesaurable.__init__(self, parent)
+        Measurable.__init__(self, parent)

@@ -1,8 +1,8 @@
 import struct
 
-from src.parser.mesaurable import Mesaurable
+from src.parser.measurable import Measurable
 
-class Bytes(Mesaurable):
+class Bytes(Measurable):
 
     def __init__(self, parent, bytesCount, value=0):
         '''
@@ -11,7 +11,7 @@ class Bytes(Mesaurable):
         I 4 bytes unsigned
         Q 8 bytes unsigned
         '''
-        Mesaurable.__init__(self, parent)
+        Measurable.__init__(self, parent)
         
         self.bytesCountMap = {1: 'B', 2: 'H', 4: 'I', 8: 'Q'}
         if not self.bytesCountMap.has_key(bytesCount):
