@@ -15,12 +15,12 @@ file.write(bytes._data)
 #     file.write(x.data) 
 
 header = HeaderItem(None)
-print header.getItemOffset(5)
+print header.getIndexOffset(5)
 print header.getBytesCount()
 
 header.signature._data.append(Bytes(None, 1))
 
-print header.getItemOffset(5)
+print header.getIndexOffset(5)
 print header.getBytesCount()
 
 print header.data_off.value
@@ -43,5 +43,5 @@ print header.data_off.data
 stringId = StringIdItem(None)
 print
 print stringId.getBytesCount()
-print stringId.getItemOffset(0)
+print stringId.getIndexOffset(0)
 
