@@ -7,6 +7,7 @@ Created on 5 cze 2014
 class DebugInfoItemSection(object):
     '''
     Is it needed?
+    For sure!
     '''
 
 
