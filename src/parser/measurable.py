@@ -6,6 +6,7 @@ Created on 4 cze 2014
 
 import src.items
 
+
 class Measurable(object):
     '''
     classdocs

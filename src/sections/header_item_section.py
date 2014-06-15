@@ -6,6 +6,7 @@ Created on 3 cze 2014
 from src.items.header_item import HeaderItem
 from src.parser.measurable import Measurable
 
+
 class HeaderItemSection(Measurable):
     '''
     classdocs

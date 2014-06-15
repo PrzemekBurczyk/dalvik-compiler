@@ -6,6 +6,7 @@ Created on 5 cze 2014
 
 from src.parser.measurable import Measurable
 
+
 class MapItemSection(Measurable):
     '''
     classdocs

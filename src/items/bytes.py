@@ -2,6 +2,7 @@ import struct
 
 from src.parser.measurable import Measurable
 
+
 class Bytes(Measurable):
 
     def __init__(self, parent, bytesCount, value=0):

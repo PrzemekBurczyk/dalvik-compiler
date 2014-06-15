@@ -6,6 +6,7 @@ Created on 4 cze 2014
 from src.items.bytes import Bytes
 from src.parser.measurable import Measurable
 
+
 class BytesArray(Measurable):
     '''
     classdocs
