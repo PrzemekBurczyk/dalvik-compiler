@@ -1,12 +1,12 @@
 from ply import yacc
 import sys
 
+from Cparser import Cparser
+from Interpreter import Interpreter
+from TypeChecker_2 import TypeChecker
 from src.items.bytes import Bytes
 from src.items.header_item import HeaderItem
 from src.items.string_id_item import StringIdItem
-from src.plyparser.Cparser import Cparser
-from src.plyparser.Interpreter import Interpreter
-from src.plyparser.TypeChecker_2 import TypeChecker
 
 
 if __name__ == '__main__':
