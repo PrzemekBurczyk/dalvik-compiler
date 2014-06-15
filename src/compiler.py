@@ -7,6 +7,7 @@ from TypeChecker_2 import TypeChecker
 from src.items.bytes import Bytes
 from src.items.header_item import HeaderItem
 from src.items.string_id_item import StringIdItem
+from items.string_data_item import StringDataItem
 
 
 if __name__ == '__main__':
@@ -22,7 +23,7 @@ if __name__ == '__main__':
     #     file.write(x.data) 
     
     header = HeaderItem(None)
-    print header.getIndexOffset(5)
+    print header.getIndexOffset(3)
     print header.getBytesCount()
     
     header.signature._data.append(Bytes(None, 1))
@@ -50,7 +51,22 @@ if __name__ == '__main__':
     stringId = StringIdItem(None)
     print
     print stringId.getBytesCount()
-    print stringId.getIndexOffset(0)
+    print stringId.getIndexOffset(1)
+    
+    stringDataItem = StringDataItem(None)
+    print 'stringDataItem:'
+    
+    string = "abcd"
+    stringDataItem.setString(string)
+    
+    print stringDataItem.utf16Size
+    print stringDataItem.string
+    for x in stringDataItem.string._data:
+        print x.value
+        print x.data
+        print x.bytesCount
+    
+    
 
     try:
         filename = sys.argv[1] if len(sys.argv) > 1 else "example.txt"
