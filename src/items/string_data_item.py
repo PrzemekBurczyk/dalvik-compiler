@@ -34,7 +34,6 @@ class StringDataItem(Measurable):
             self.utf16Size = string.__len__()
             for x in string:
                 byte = Bytes(self,1)
-                print x.encode('hex')
-                byte.value = x.encode('hex')
+                byte.value = int(x.encode('hex'))
                 self.string._data.append(byte)
             

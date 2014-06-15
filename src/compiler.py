@@ -56,7 +56,7 @@ if __name__ == '__main__':
     stringDataItem = StringDataItem(None)
     print 'stringDataItem:'
     
-    string = "abcd"
+    string = "abcd123"
     stringDataItem.setString(string)
     
     print stringDataItem.utf16Size
@@ -64,7 +64,6 @@ if __name__ == '__main__':
     for x in stringDataItem.string._data:
         print x.value
         print x.data
-        print x.bytesCount
     
     
 
