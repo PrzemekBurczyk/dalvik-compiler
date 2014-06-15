@@ -4,10 +4,10 @@ import sys
 from Cparser import Cparser
 from Interpreter import Interpreter
 from TypeChecker_2 import TypeChecker
-from src.items.bytes import Bytes
-from src.items.header_item import HeaderItem
-from src.items.string_id_item import StringIdItem
+from items.bytes import Bytes
+from items.header_item import HeaderItem
 from items.string_data_item import StringDataItem
+from items.string_id_item import StringIdItem
 from parser.dex import Dex
 
 

@@ -4,8 +4,9 @@ Created on 4 cze 2014
 @author: Przemek
 '''
 
-import src.items
 from __builtin__ import type
+
+import src.items
 
 
 class Measurable(object):

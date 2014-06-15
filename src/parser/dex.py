@@ -3,19 +3,19 @@ Created on 3 cze 2014
 
 @author: Przemek
 '''
-from sections.header_item_section import HeaderItemSection
-from sections.proto_id_item_section import ProtoIdItemSection
-from sections.string_id_item_section import StringIdItemSection
-from sections.type_id_item_section import TypeIdItemSection
-from sections.method_id_item_section import MethodIdItemSection
-from src.parser.measurable import Measurable
+from sections.class_data_item_section import ClassDataItemSection
 from sections.class_def_item_section import ClassDefItemSection
 from sections.code_item_section import CodeItemSection
-from sections.type_list_section import TypeListSection
-from sections.string_data_item_section import StringDataItemSection
 from sections.debug_info_item_section import DebugInfoItemSection
-from sections.class_data_item_section import ClassDataItemSection
+from sections.header_item_section import HeaderItemSection
 from sections.map_item_section import MapItemSection
+from sections.method_id_item_section import MethodIdItemSection
+from sections.proto_id_item_section import ProtoIdItemSection
+from sections.string_data_item_section import StringDataItemSection
+from sections.string_id_item_section import StringIdItemSection
+from sections.type_id_item_section import TypeIdItemSection
+from sections.type_list_section import TypeListSection
+from src.parser.measurable import Measurable
 
 
 class Dex(Measurable):

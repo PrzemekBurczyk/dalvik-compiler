@@ -7,6 +7,7 @@ from src.items.bytes import Bytes
 from src.items.bytes_array import BytesArray
 from src.parser.measurable import Measurable
 
+
 class StringDataItem(Measurable):
     '''
     classdocs

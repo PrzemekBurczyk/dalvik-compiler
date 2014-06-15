@@ -5,6 +5,7 @@ Created on 5 cze 2014
 '''
 from parser.measurable import Measurable
 
+
 class DebugInfoItemSection(Measurable):
     '''
     Is it needed?
