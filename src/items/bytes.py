@@ -14,6 +14,8 @@ class Bytes(Measurable):
         '''
         Measurable.__init__(self, parent)
         
+        #print "Bytes parent: " + str(parent)
+        
         self.bytesCountMap = {1: 'B', 2: 'H', 4: 'I', 8: 'Q'}
         if not self.bytesCountMap.has_key(bytesCount):
             raise InappropriateBytesCount()

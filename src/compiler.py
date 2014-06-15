@@ -26,6 +26,7 @@ if __name__ == '__main__':
     header = HeaderItem(None)
     print header.getIndexOffset(3)
     print header.getBytesCount()
+    print header.getGlobalOffset()
     
     header.signature._data.append(Bytes(None, 1))
     
@@ -42,8 +43,7 @@ if __name__ == '__main__':
     print header.data_off.bytesCount
     print header.data_off.data
     
-    header.data_off.bytesCount = 4
-    header.data_off.value = 0x12345678
+    
     
     print header.data_off.value
     print header.data_off.bytesCount
@@ -76,7 +76,17 @@ if __name__ == '__main__':
         sys.exit(0)
 
     dex = Dex()
-
+    print "dex printItemsOffset:"
+    header = HeaderItem(None)
+    dex.header_item_section.data.append(header)
+    
+    header.data_off.bytesCount = 4
+    header.data_off.value = 0x12345678
+    
+    
+    dex.printItemsOffset()
+    
+    print "CParsing:"
     Cparser = Cparser()
     parser = yacc.yacc(module=Cparser)
     text = file.read()
