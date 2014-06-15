@@ -1,0 +1,7 @@
+int a = 1;
+
+int b(){
+	return 1;
+}
+
+print a;

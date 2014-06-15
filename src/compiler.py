@@ -8,6 +8,7 @@ from src.items.bytes import Bytes
 from src.items.header_item import HeaderItem
 from src.items.string_id_item import StringIdItem
 from items.string_data_item import StringDataItem
+from parser.dex import Dex
 
 
 if __name__ == '__main__':
@@ -64,8 +65,8 @@ if __name__ == '__main__':
     for x in stringDataItem.string._data:
         print x.value
         print x.data
-    
-    
+
+#debug data above
 
     try:
         filename = sys.argv[1] if len(sys.argv) > 1 else "example.txt"
@@ -73,6 +74,8 @@ if __name__ == '__main__':
     except IOError:
         print("Cannot open {0} file".format(filename))
         sys.exit(0)
+
+    dex = Dex()
 
     Cparser = Cparser()
     parser = yacc.yacc(module=Cparser)

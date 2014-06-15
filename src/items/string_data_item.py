@@ -7,8 +7,6 @@ from src.items.bytes import Bytes
 from src.items.bytes_array import BytesArray
 from src.parser.measurable import Measurable
 
-import binascii
-
 class StringDataItem(Measurable):
     '''
     classdocs
@@ -28,7 +26,7 @@ class StringDataItem(Measurable):
         
     def setString(self, string):
         '''
-        Fills in string BytesArray
+        Fills in self.string BytesArray
         '''
         if isinstance(string, basestring):
             self.utf16Size = string.__len__()
