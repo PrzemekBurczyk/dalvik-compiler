@@ -7,6 +7,7 @@ from TreePrinter import TreePrinter
 from Interpreter import Interpreter
 from TypeChecker_2 import TypeChecker
 from src.items.bytes import Bytes
+from src.items.bytes_array import BytesArray
 from src.items.header_item import HeaderItem
 from src.items.string_data_item import StringDataItem
 from src.items.string_id_item import StringIdItem
@@ -16,9 +17,9 @@ from src.parser.dex import Dex
 if __name__ == '__main__':
     bytes = Bytes(None, 2, 0x278)
 
-    file = open("../test.txt", "wb")
+    output = open("../test.txt", "wb")
 
-    file.write(bytes._data)
+    # file.write(bytes._data)
 
     # arr = [Bytes(1, 3), Bytes(1, 64)]
     # for x in arr: 
@@ -83,7 +84,13 @@ if __name__ == '__main__':
     header.data_off.bytesCount = 4
     header.data_off.value = 0x12345678
 
-    dex.printItemsOffset()
+    dex.printItem(output)
+    # header.printItem(output)
+
+    # strItem = StringDataItem(None)
+    # strItem.setString("Main")
+    # strItem.printItem(output)
+
 
     print "CParsing:"
     Cparser = Cparser()

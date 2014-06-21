@@ -16,9 +16,10 @@ class Bytes(Measurable):
         # print "Bytes parent: " + str(parent)
 
         self.bytesCountMap = {1: 'B', 2: 'H', 4: 'I', 8: 'Q'}
-        if not self.bytesCountMap.has_key(bytesCount):
+        if not bytesCount in self.bytesCountMap:
             raise InappropriateBytesCount()
 
+        self.ref = None
         self._bytesCount = bytesCount
         self._value = value
         self._data = struct.pack(self.bytesCountMap.get(self._bytesCount), self._value)
@@ -32,8 +33,8 @@ class Bytes(Measurable):
         if not self.bytesCountMap.has_key(bytesCount):
             raise InappropriateBytesCount()
         self._data = struct.pack(self.bytesCountMap.get(bytesCount),
-                                 struct.unpack(self.bytesCountMap.get(self._bytesCount), self._data)[
-                                     0])  # 0 because it is a tuple
+                                 struct.unpack(self.bytesCountMap.get(self._bytesCount), self._data)[0])
+                                # 0 because it is a tuple
         self._bytesCount = bytesCount
 
     @property

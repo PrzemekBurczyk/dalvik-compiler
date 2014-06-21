@@ -36,7 +36,6 @@ class Measurable(object):
         return 0 if isinstance(self._data, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray) else sum([x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data[:index]])
 
     def getItemIndex(self, item):
-        print 'getItemIndex: ' + str(item)
         if isinstance(self, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray):
             raise BytesHaveNoItems()
         if isinstance(self._data, src.items.bytes.Bytes) or isinstance(self._data, src.items.bytes_array.BytesArray):
@@ -48,8 +47,6 @@ class Measurable(object):
             raise ItemNotFound()
 
     def getItemOffset(self, item):
-        print "item: " + str(item)
-        print type(item)
         return self.getIndexOffset(self.getItemIndex(item))
 
     def getGlobalOffset(self):
@@ -59,18 +56,19 @@ class Measurable(object):
         return self if self.parent is None else self.parent.getRoot()
 
     def getBytesCount(self):
-        return len(self._data._data) if isinstance(self._data, src.items.bytes.Bytes) else sum(
-            x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data)
+        return len(self._data._data) if isinstance(self._data, src.items.bytes.Bytes) else sum(x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data)
 
-    def printItemsOffset(self):
-        print "self: " + str(self)
-        if isinstance(self, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray):
-            print "byte reached!"
-            print self.getGlobalOffset()
+    def printItem(self, output):
+        if isinstance(self, src.items.bytes.Bytes):
+            if self.ref is not None:
+                self.value = self.ref.getGlobalOffset()
+            output.write(self.data)
+        elif isinstance(self, src.items.bytes_array.BytesArray):
+            for byte in self.data:
+                output.write(byte.data)
         else:
             for item in self.data:
-                item.printItemsOffset()
-
+                item.printItem(output)
 
 class BytesHaveNoItems(Exception):
     def __init__(self):
