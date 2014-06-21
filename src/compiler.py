@@ -17,15 +17,6 @@ from src.sections.string_data_item_section import StringDataItemSection
 
 if __name__ == '__main__':
 
-    output = open("../test.txt", "wb")
-
-    # file.write(bytes._data)
-
-    # arr = [Bytes(1, 3), Bytes(1, 64)]
-    # for x in arr: 
-    # print x.data
-    #     file.write(x.data) 
-
     header = HeaderItem(None)
     print header.getIndexOffset(3)
     print header.getBytesCount()
@@ -75,6 +66,8 @@ if __name__ == '__main__':
     except IOError:
         print("Cannot open {0} file".format(filename))
         sys.exit(0)
+
+    output = open("../test.txt", "wb")
 
     dex = Dex()
     print "dex printItemsOffset:"
