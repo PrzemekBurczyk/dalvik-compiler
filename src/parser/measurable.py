@@ -43,11 +43,11 @@ class Measurable(object):
             raise BytesHaveNoItems()
         if isinstance(self._data, src.items.bytes.Bytes) or isinstance(self._data, src.items.bytes_array.BytesArray):
             raise ItemNotFound()
-        index = self._data.index(item, -1)
-        if index < 0:
-            raise ItemNotFound()
-        else:
+        try:
+            index = self._data.index(item)
             return index
+        except ValueError:
+            raise ItemNotFound()
 
     def getItemOffset(self, item):
         print "item: " + str(item)
