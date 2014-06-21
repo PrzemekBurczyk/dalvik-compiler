@@ -18,11 +18,11 @@ class MapItem(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
         self.type = Bytes(self, 2)
         self.unused = Bytes(self, 2)
         self.size = Bytes(self, 4)
         self.offset = Bytes(self, 4)
-        
+
         self._data = [self.type, self.unused, self.size, self.offset]
         

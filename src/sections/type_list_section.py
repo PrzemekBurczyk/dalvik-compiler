@@ -17,5 +17,5 @@ class TypeListSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
-        #it holds Bytes(self, 2) between it's items! no zero bytes at the end!
+
+        # it holds Bytes(self, 2) between it's items! no zero bytes at the end!

@@ -18,9 +18,9 @@ class ProtoIdItem(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
         self.shorty_idx = Bytes(self, 4)
         self.return_type_idx = Bytes(self, 4)
         self.parameters_off = Bytes(self, 4)
-        
+
         self._data = [self.shorty_idx, self.return_type_idx, self.parameters_off]

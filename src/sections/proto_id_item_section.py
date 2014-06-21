@@ -6,7 +6,7 @@ Created on 3 cze 2014
 from src.parser.measurable import Measurable
 
 
-class   ProtoIdItemSection(Measurable):
+class ProtoIdItemSection(Measurable):
     '''
     classdocs
     '''

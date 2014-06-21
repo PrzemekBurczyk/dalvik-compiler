@@ -18,7 +18,5 @@ class BytesArray(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
         self._data = [Bytes(self, 1)] * size
-        
-        

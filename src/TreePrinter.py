@@ -2,15 +2,14 @@ import AST
 
 
 def addToClass(cls):
-
     def decorator(func):
-        setattr(cls,func.__name__,func)
+        setattr(cls, func.__name__, func)
         return func
+
     return decorator
 
 
 class TreePrinter:
-
     @classmethod
     def printIndented(cls, string, level):
         print "| " * level + string
@@ -40,13 +39,13 @@ class TreePrinter:
     def printTree(self, indent):
         for init in self.inits:
             init.printTree(indent)
-    
+
     @addToClass(AST.Init)
     def printTree(self, indent):
         TreePrinter.printIndented("=", indent)
         TreePrinter.printIndented(self.id, indent + 1)
         self.expression.printTree(indent + 1)
-        
+
     @addToClass(AST.Id)
     def printTree(self, indent):
         TreePrinter.printIndented(self.id, indent)
@@ -55,7 +54,7 @@ class TreePrinter:
     def printTree(self, indent):
         for instruction in self.instructions:
             instruction.printTree(indent)
-        
+
     @addToClass(AST.Print)
     def printTree(self, indent):
         if not self.error:
@@ -66,7 +65,7 @@ class TreePrinter:
     def printTree(self, indent):
         TreePrinter.printIndented(self.id + ":", indent)
         self.instruction.printTree(indent)
-    
+
     @addToClass(AST.Assignment)
     def printTree(self, indent):
         TreePrinter.printIndented("=", indent)
@@ -103,7 +102,7 @@ class TreePrinter:
         TreePrinter.printIndented("REPEAT", indent)
         self.statement.printTree(indent + 1)
         TreePrinter.printIndented("UNTIL", indent)
-        self.cond.printTree(indent + 1) 
+        self.cond.printTree(indent + 1)
 
     @addToClass(AST.Return)
     def printTree(self, indent):
@@ -141,7 +140,7 @@ class TreePrinter:
     def printTree(self, indent):
         if not self.error:
             self.expression.printTree(indent)
-    
+
     @addToClass(AST.IdWithParentheses)
     def printTree(self, indent):
         if not self.error:
@@ -153,7 +152,7 @@ class TreePrinter:
     def printTree(self, indent):
         for expression in self.expressions:
             expression.printTree(indent)
-    
+
     @addToClass(AST.FunctionDefinitions)
     def printTree(self, indent):
         for function in self.fundefs:
@@ -167,14 +166,14 @@ class TreePrinter:
         self.arglist.printTree(indent + 1)
         self.compound_instr.printTree(indent + 1)
 
-    @addToClass(AST.ArgumentList) 
+    @addToClass(AST.ArgumentList)
     def printTree(self, indent):
         for argument in self.arg_list:
             argument.printTree(indent)
-      
+
     @addToClass(AST.Argument)
     def printTree(self, indent):
         TreePrinter.printIndented("ARG " + self.id, indent)
-        
-    # @addToClass ...
-    # ...
+
+        # @addToClass ...
+        # ...

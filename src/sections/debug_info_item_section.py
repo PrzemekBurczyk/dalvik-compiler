@@ -3,7 +3,7 @@ Created on 5 cze 2014
 
 @author: Przemek
 '''
-from parser.measurable import Measurable
+from src.parser.measurable import Measurable
 
 
 class DebugInfoItemSection(Measurable):

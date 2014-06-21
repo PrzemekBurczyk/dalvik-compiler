@@ -18,23 +18,25 @@ class Measurable(object):
         '''
         Constructor
         '''
-        #print "mesaurable parent: " + str(parent)
+        # print "mesaurable parent: " + str(parent)
         self._parent = parent
         self._data = []
-        
+
     @property
     def data(self):
         return self._data
-        
+
     @property
     def parent(self):
         return self._parent
-    
+
     def getIndexOffset(self, index):
         if isinstance(self, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray):
             raise BytesHaveNoItems()
-        return 0 if isinstance(self._data, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray) else sum([x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data[:index]])
-    
+        return 0 if isinstance(self._data, src.items.bytes.Bytes) or isinstance(self,
+                                                                                src.items.bytes_array.BytesArray) else sum(
+            [x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data[:index]])
+
     def getItemIndex(self, item):
         print 'getItemIndex: ' + str(item)
         if isinstance(self, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray):
@@ -46,21 +48,22 @@ class Measurable(object):
             raise ItemNotFound()
         else:
             return index
-    
+
     def getItemOffset(self, item):
         print "item: " + str(item)
         print type(item)
         return self.getIndexOffset(self.getItemIndex(item))
-    
+
     def getGlobalOffset(self):
         return 0 if self.parent is None else self.parent.getItemOffset(self) + self.parent.getGlobalOffset()
-    
+
     def getRoot(self):
         return self if self.parent is None else self.parent.getRoot()
-    
+
     def getBytesCount(self):
-        return len(self._data._data) if isinstance(self._data, src.items.bytes.Bytes) else sum(x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data)
-    
+        return len(self._data._data) if isinstance(self._data, src.items.bytes.Bytes) else sum(
+            x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data)
+
     def printItemsOffset(self):
         print "self: " + str(self)
         if isinstance(self, src.items.bytes.Bytes):
@@ -69,14 +72,14 @@ class Measurable(object):
         else:
             for item in self.data:
                 item.printItemsOffset()
-    
+
+
 class BytesHaveNoItems(Exception):
-    
     def __init__(self):
         pass
-    
+
+
 class ItemNotFound(Exception):
-    
     def __init__(self):
         pass
     

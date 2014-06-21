@@ -4,13 +4,15 @@ class Node(object):
 
     def accept(self, visitor):
         return visitor.visit(self)
-        
+
+
 class Program(Node):
     def __init__(self, declarations, fundefs, instructions):
         self.declarations = declarations
         self.fundefs = fundefs
         self.instructions = instructions
-        
+
+
 class Declarations(Node):
     def __init__(self, declarations, declaration):
         self.declarations = []
@@ -18,13 +20,15 @@ class Declarations(Node):
             self.declarations.extend(declarations.declarations)
         if declaration:
             self.declarations.append(declaration)
-        
+
+
 class Declaration(Node):
     def __init__(self, type, inits, error):
         self.type = type
         self.inits = inits
         self.error = error
-        
+
+
 class Inits(Node):
     def __init__(self, inits, init):
         self.inits = []
@@ -32,12 +36,14 @@ class Inits(Node):
             self.inits.extend(inits.inits)
         if init:
             self.inits.append(init)
-        
+
+
 class Init(Node):
     def __init__(self, id, expression):
         self.id = id
         self.expression = expression
-        
+
+
 class Instructions(Node):
     def __init__(self, instructions, instruction):
         self.instructions = []
@@ -46,78 +52,96 @@ class Instructions(Node):
         if instruction:
             self.instructions.append(instruction)
 
+
 class Instruction(Node):
     pass
+
 
 class Print(Instruction):
     def __init__(self, expression, error):
         self.expression = expression
         self.error = error
 
+
 class Labeled(Instruction):
     def __init__(self, id, instruction):
         self.id = id
         self.instruction = instruction
+
 
 class Assignment(Instruction):
     def __init__(self, id, expression):
         self.id = id
         self.expression = expression
 
+
 class Choice(Instruction):
     def __init__(self, _if, _else):
         self._if = _if
         self._else = _else
-    
+
+
 class If(Node):
     def __init__(self, cond, statement, error):
         self.cond = cond
         self.statement = statement
         self.error = error
-        
+
+
 class Else(Node):
     def __init__(self, statement):
         self.statement = statement
+
 
 class While(Instruction):
     def __init__(self, cond, statement, error):
         self.cond = cond
         self.statement = statement
         self.error = error
-        
+
+
 class RepeatUntil(Instruction):
     def __init__(self, statement, cond):
         self.cond = cond
         self.statement = statement
 
+
 class Return(Instruction):
     def __init__(self, expression):
-        self.expression = expression     
-        
+        self.expression = expression
+
+
 class Continue(Instruction):
     pass
 
+
 class Break(Instruction):
     pass
+
 
 class Compound(Instruction):
     def __init__(self, declarations, instructions):
         self.declarations = declarations
         self.instructions = instructions
 
+
 class Condition(Node):
     pass
 
+
 class Expression(Condition):
     pass
+
 
 class Const(Expression):
     def __init__(self, value):
         self.value = value
 
+
 class Id(Expression):
     def __init__(self, id):
         self.id = id
+
 
 class BinExpr(Expression):
     def __init__(self, expr1, operator, expr2):
@@ -125,10 +149,12 @@ class BinExpr(Expression):
         self.operator = operator
         self.expr2 = expr2
 
+
 class ExpressionInParentheses(Expression):
     def __init__(self, expression, error):
         self.expression = expression
         self.error = error
+
 
 class IdWithParentheses(Expression):
     def __init__(self, id, expression_list, error):
@@ -136,13 +162,15 @@ class IdWithParentheses(Expression):
         self.expression_list = expression_list
         self.error = error
 
+
 class ExpressionList(Node):
     def __init__(self, expr_list, expression):
         self.expressions = []
         if expr_list:
             self.expressions.extend(expr_list.expressions)
-        if expression:    
+        if expression:
             self.expressions.append(expression)
+
 
 class FunctionDefinitions(Node):
     def __init__(self, fundef, fundefs):
@@ -152,12 +180,14 @@ class FunctionDefinitions(Node):
         if fundefs:
             self.fundefs.extend(fundefs.fundefs)
 
+
 class FunctionDefinition(Node):
     def __init__(self, type, id, arglist, compound_instr):
         self.type = type
         self.id = id
         self.arglist = arglist
         self.compound_instr = compound_instr
+
 
 class ArgumentList(Node):
     def __init__(self, arg_list, arg):
@@ -166,6 +196,7 @@ class ArgumentList(Node):
             self.arg_list.extend(arg_list.arg_list)
         if arg:
             self.arg_list.append(arg)
+
 
 class Argument(Node):
     def __init__(self, type, id):

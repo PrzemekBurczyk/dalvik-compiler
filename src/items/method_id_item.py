@@ -18,9 +18,9 @@ class MethodIdItem(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
         self.classIdx = Bytes(self, 2)
         self.protoIdx = Bytes(self, 2)
         self.nameIdx = Bytes(self, 4)
-        
+
         self._data = [self.classIdx, self.protoIdx, self.nameIdx]

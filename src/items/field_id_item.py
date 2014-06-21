@@ -18,9 +18,9 @@ class FieldIdItem(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
         self.classIdx = Bytes(self, 2)
         self.returnTypeIdx = Bytes(self, 2)
         self.nameIdx = Bytes(self, 4)
-        
+
         self._data = [self.classIdx, self.returnTypeIdx, self.nameIdx]

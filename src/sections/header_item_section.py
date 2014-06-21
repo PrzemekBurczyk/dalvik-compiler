@@ -3,7 +3,6 @@ Created on 3 cze 2014
 
 @author: Przemek
 '''
-from src.items.header_item import HeaderItem
 from src.parser.measurable import Measurable
 
 
