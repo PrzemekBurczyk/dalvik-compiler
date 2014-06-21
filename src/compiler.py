@@ -3,6 +3,7 @@ import sys
 from ply import yacc
 
 from Cparser import Cparser
+from TreePrinter import TreePrinter
 from Interpreter import Interpreter
 from TypeChecker_2 import TypeChecker
 from src.items.bytes import Bytes
@@ -89,7 +90,7 @@ if __name__ == '__main__':
     parser = yacc.yacc(module=Cparser)
     text = file.read()
     ast = parser.parse(text, lexer=Cparser.scanner)
-    if ast == None:
+    if ast is None:
         sys.exit(-1)
 
     try:
