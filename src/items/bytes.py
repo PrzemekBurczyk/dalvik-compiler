@@ -39,7 +39,7 @@ class Bytes(Measurable):
 
     @property
     def value(self):
-        return self._value
+        return struct.unpack(self.bytesCountMap.get(self._bytesCount), self._data)[0]
 
     @value.setter
     def value(self, value):

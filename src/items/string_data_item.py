@@ -13,26 +13,25 @@ class StringDataItem(Measurable):
     classdocs
     '''
 
-
-    def __init__(self, parent):
+    def __init__(self, parent, string=""):
         '''
         Constructor
         '''
         Measurable.__init__(self, parent)
-
         self.utf16Size = Bytes(self, 1)
         self.string = BytesArray(self, 0)  # it is data from dump, but name is already reserved
-
         self._data = [self.utf16Size, self.string]
+        self.setString(string)
 
     def setString(self, string):
         '''
         Fills in self.string BytesArray
         '''
         if isinstance(string, basestring):
-            self.utf16Size = string.__len__()
+            self.utf16Size.value = string.__len__()
             for x in string:
-                byte = Bytes(self, 1)
+                byte = Bytes(self.string, 1)
                 byte.value = int(x.encode('hex'), 16)
-                self.string._data.append(byte)
+                self.string.data.append(byte)
+            self.string.data.append(Bytes(self.string, 1))
             

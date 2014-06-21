@@ -12,10 +12,10 @@ from src.items.header_item import HeaderItem
 from src.items.string_data_item import StringDataItem
 from src.items.string_id_item import StringIdItem
 from src.parser.dex import Dex
+from src.sections.string_data_item_section import StringDataItemSection
 
 
 if __name__ == '__main__':
-    bytes = Bytes(None, 2, 0x278)
 
     output = open("../test.txt", "wb")
 
@@ -85,12 +85,6 @@ if __name__ == '__main__':
     header.data_off.value = 0x12345678
 
     dex.printItem(output)
-    # header.printItem(output)
-
-    # strItem = StringDataItem(None)
-    # strItem.setString("Main")
-    # strItem.printItem(output)
-
 
     print "CParsing:"
     Cparser = Cparser()

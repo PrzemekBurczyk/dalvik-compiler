@@ -7,6 +7,7 @@ Created on 4 cze 2014
 from __builtin__ import type
 
 import src.items
+import src.sections
 
 
 class Measurable(object):
@@ -66,6 +67,10 @@ class Measurable(object):
         elif isinstance(self, src.items.bytes_array.BytesArray):
             for byte in self.data:
                 output.write(byte.data)
+        elif isinstance(self.data, src.items.bytes.Bytes):
+            if self.data.ref is not None:
+                self.data.value = self.data.ref.getGlobalOffset()
+            output.write(self.data.data)
         else:
             for item in self.data:
                 item.printItem(output)
