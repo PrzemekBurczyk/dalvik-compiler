@@ -33,9 +33,7 @@ class Measurable(object):
     def getIndexOffset(self, index):
         if isinstance(self, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray):
             raise BytesHaveNoItems()
-        return 0 if isinstance(self._data, src.items.bytes.Bytes) or isinstance(self,
-                                                                                src.items.bytes_array.BytesArray) else sum(
-            [x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data[:index]])
+        return 0 if isinstance(self._data, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray) else sum([x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data[:index]])
 
     def getItemIndex(self, item):
         print 'getItemIndex: ' + str(item)
@@ -66,7 +64,7 @@ class Measurable(object):
 
     def printItemsOffset(self):
         print "self: " + str(self)
-        if isinstance(self, src.items.bytes.Bytes):
+        if isinstance(self, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray):
             print "byte reached!"
             print self.getGlobalOffset()
         else:
