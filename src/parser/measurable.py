@@ -62,7 +62,10 @@ class Measurable(object):
     def printItem(self, output):
         if isinstance(self, src.items.bytes.Bytes):
             if self.ref is not None:
-                self.value = self.ref.getGlobalOffset()
+                if self.ref == 0:
+                    self.value = 0
+                else:
+                    self.value = self.ref.getGlobalOffset()
             output.write(self.data)
         elif isinstance(self, src.items.bytes_array.BytesArray):
             for byte in self.data:

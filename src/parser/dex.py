@@ -36,11 +36,11 @@ class Dex(Measurable):
         # data section has to be eariler, id section initializes with references
 
         self.type_id_item_section = TypeIdItemSection(self)
+        self.type_list_section = TypeListSection(self)
         self.proto_id_item_section = ProtoIdItemSection(self)
         self.method_id_item_section = MethodIdItemSection(self)
         self.class_def_item_section = ClassDefItemSection(self)
         self.code_item_section = CodeItemSection(self)
-        self.type_list_section = TypeListSection(self)
         self.debug_info_item_section = DebugInfoItemSection(self)
         self.class_data_item_section = ClassDataItemSection(self)
         self.map_item_section = MapItemSection(self)
