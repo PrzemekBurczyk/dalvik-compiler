@@ -60,6 +60,7 @@ class Measurable(object):
         return len(self._data._data) if isinstance(self._data, src.items.bytes.Bytes) else sum(x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data)
 
     def printItem(self, output):
+        print self
         if isinstance(self, src.items.bytes.Bytes):
             if self.ref is not None:
                 if self.ref == 0:
@@ -72,8 +73,19 @@ class Measurable(object):
                 output.write(byte.data)
         elif isinstance(self.data, src.items.bytes.Bytes):
             if self.data.ref is not None:
-                self.data.value = self.data.ref.getGlobalOffset()
+                if self.data.ref == 0:
+                    self.data.value = 0
+                else:
+                    self.data.value = self.data.ref.getGlobalOffset()
             output.write(self.data.data)
+        elif isinstance(self.data, src.items.bytes_array.BytesArray):
+            for byte in self.data:
+                if byte.ref is not None:
+                    if byte.ref == 0:
+                        byte.value = 0;
+                    else:
+                        byte.value = byte.ref.getGlobalOffset()
+                output.write(byte.data)
         else:
             for item in self.data:
                 item.printItem(output)

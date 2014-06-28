@@ -20,19 +20,19 @@ class MethodIdItemSection(Measurable):
         Measurable.__init__(self, parent)
         
         method_id_item = MethodIdItem(self)
-        method_id_item.classIdx = 0
-        method_id_item.protoIdx = 0
-        method_id_item.nameIdx = 0
+        method_id_item.classIdx.value = 0
+        method_id_item.protoIdx.value = 0
+        method_id_item.nameIdx.value = 0
         self.data.append(method_id_item)
         
         method_id_item = MethodIdItem(self)
-        method_id_item.classIdx = 0
-        method_id_item.protoIdx = 1
-        method_id_item.nameIdx = 7
+        method_id_item.classIdx.value = 0
+        method_id_item.protoIdx.value = 1
+        method_id_item.nameIdx.value = 7
         self.data.append(method_id_item)
         
         method_id_item = MethodIdItem(self)
-        method_id_item.classIdx = 1
-        method_id_item.protoIdx = 0
-        method_id_item.nameIdx = 0
+        method_id_item.classIdx.value = 1
+        method_id_item.protoIdx.value = 0
+        method_id_item.nameIdx.value = 0
         self.data.append(method_id_item)

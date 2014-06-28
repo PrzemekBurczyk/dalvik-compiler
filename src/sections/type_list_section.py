@@ -22,6 +22,6 @@ class TypeListSection(Measurable):
         # it holds Bytes(self, 2) between it's items! no zero bytes at the end!
         
         type_list = TypeList(self)
-        type_list.size = 1
-        type_list.typeIdItem = 3
+        type_list.size.value = 1
+        type_list.typeIdItem.value = 3
         self.data.append(type_list)

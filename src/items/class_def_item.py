@@ -7,7 +7,7 @@ from src.items.bytes import Bytes
 from src.parser.measurable import Measurable
 
 
-class ClassDefItemSection(Measurable):
+class ClassDefItem(Measurable):
     '''
     classdocs
     '''

@@ -25,8 +25,9 @@ class CodeItem(Measurable):
         self.outsSize = Bytes(self, 2)
         self.triesSize = Bytes(self, 2)
         self.debugInfoOff = Bytes(self, 4)  # can it be 0 at all times?
+        self.debugInfoOff.value = 0
         self.insnsSize = Bytes(self, 4)  # number of Bytes(self, 2) of instructions
-        self.instructions = BytesArray(self, 0)
+        self.instructions = []
 
         self._data = [self.registersSize, self.insSize, self.outsSize, self.triesSize, self.debugInfoOff,
                       self.insnsSize, self.instructions]
