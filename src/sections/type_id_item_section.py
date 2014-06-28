@@ -3,8 +3,8 @@ Created on 3 cze 2014
 
 @author: Przemek
 '''
-from src.items.string_id_item import StringIdItem
 from src.parser.measurable import Measurable
+from src.items.type_id_item import TypeIdItem
 
 
 class TypeIdItemSection(Measurable):
@@ -18,15 +18,15 @@ class TypeIdItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        item = StringIdItem(self)
+        item = TypeIdItem(self)
         item.data.value = 1
         self.data.append(item)
-        item = StringIdItem(self)
+        item = TypeIdItem(self)
         item.data.value = 2
         self.data.append(item)
-        item = StringIdItem(self)
+        item = TypeIdItem(self)
         item.data.value = 4
         self.data.append(item)
-        item = StringIdItem(self)
+        item = TypeIdItem(self)
         item.data.value = 6
         self.data.append(item)
