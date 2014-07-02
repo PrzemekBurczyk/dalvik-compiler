@@ -28,25 +28,28 @@ class ClassDataItemSection(Measurable):
         class_data_item.virtualMethodsSize.value = 0
         
         direct_method = DirectMethod(self)
-        direct_method.fieldIdxDiff.value = 0
-        bytes_array = BytesArray(self, 6)
-        bytes_array.data[0].value = 8
-        bytes_array.data[1].value = 1 
-        bytes_array.data[2].value = 8
-        bytes_array.data[3].value = 0
-        bytes_array.data[4].value = 0
-        bytes_array.data[5].value = 4
-        direct_method.accessFlags = bytes_array
-        direct_method.codeOff.ref = self.getRoot().code_item_section.data[0]
+        #direct_method.fieldIdxDiff.value = 0
+        #bytes_array = BytesArray(self, 6)
+        #bytes_array.data[0].value = 8
+        #bytes_array.data[1].value = 1 
+        #bytes_array.data[2].value = 8
+        #bytes_array.data[3].value = 0
+        #bytes_array.data[4].value = 0
+        #bytes_array.data[5].value = 4
+        #direct_method.accessFlags = bytes_array
+        byte = Bytes(self, 1)
+        byte.value = 8
+        direct_method.accessFlags.data.append(byte)
+        #direct_method.codeOff.ref = self.getRoot().code_item_section.data[0]
         
-        class_data_item.directMethods.append(direct_method)
+        #class_data_item.directMethods.append(direct_method)
         
         direct_method = DirectMethod(self)
         direct_method.fieldIdxDiff.value = 1
         direct_method.accessFlags.value = 9
         direct_method.codeOff.ref = self.getRoot().code_item_section.data[1]
         
-        class_data_item.directMethods.append(direct_method)
+        #class_data_item.directMethods.append(direct_method)
         
         self.data.append(class_data_item)
 

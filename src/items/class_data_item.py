@@ -5,6 +5,7 @@ Created on 5 cze 2014
 '''
 from src.items.bytes import Bytes
 from src.parser.measurable import Measurable
+from src.items.bytes_array import BytesArray
 
 
 class ClassDataItem(Measurable):
@@ -36,7 +37,7 @@ class Member(Measurable):
     def __init__(self, parent):
         Measurable.__init__(self, parent)
         self.fieldIdxDiff = Bytes(self, 1)
-        self.accessFlags = Bytes(self, 1)
+        self.accessFlags = BytesArray(self, 1) #Bytes was here, BytesArray for testing, but still doesnt work
 
         self._data = [self.fieldIdxDiff, self.accessFlags]
 

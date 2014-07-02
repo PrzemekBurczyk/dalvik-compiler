@@ -88,7 +88,11 @@ class Measurable(object):
                 output.write(byte.data)
         else:
             for item in self.data:
-                item.printItem(output)
+                if isinstance(item, list):
+                    for subitem in item:
+                        subitem.data.printItem(output)
+                else:
+                    item.printItem(output)
 
 class BytesHaveNoItems(Exception):
     def __init__(self):
