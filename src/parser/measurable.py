@@ -79,10 +79,10 @@ class Measurable(object):
                     self.data.value = self.data.ref.getGlobalOffset()
             output.write(self.data.data)
         elif isinstance(self.data, src.items.bytes_array.BytesArray):
-            for byte in self.data:
+            for byte in self.data.data:
                 if byte.ref is not None:
                     if byte.ref == 0:
-                        byte.value = 0;
+                        byte.value = 0
                     else:
                         byte.value = byte.ref.getGlobalOffset()
                 output.write(byte.data)
@@ -90,7 +90,7 @@ class Measurable(object):
             for item in self.data:
                 if isinstance(item, list):
                     for subitem in item:
-                        subitem.data.printItem(output)
+                        subitem.printItem(output)
                 else:
                     item.printItem(output)
 
