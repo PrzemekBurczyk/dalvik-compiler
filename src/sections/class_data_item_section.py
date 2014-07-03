@@ -29,9 +29,11 @@ class ClassDataItemSection(Measurable):
         
         direct_method = DirectMethod(class_data_item)
         direct_method.fieldIdxDiff.value = 0
+
         direct_method.accessFlags.data[0].value = 0x81
         direct_method.accessFlags.data.append(Bytes(direct_method, 1, 0x80))
         direct_method.accessFlags.data.append(Bytes(direct_method, 1, 0x4))
+
         direct_method.codeOff.ref = self.getRoot().code_item_section.data[0]
         
         class_data_item.directMethods.append(direct_method)
@@ -48,6 +50,7 @@ class ClassDataItemSection(Measurable):
         # are those two in section or in item?
         self.zeros = Bytes(self, 2)
         self.size = Bytes(self, 4)
+        self.size.value = 0xc
 
         self._data + [self.size]
 

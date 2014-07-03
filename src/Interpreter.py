@@ -27,10 +27,11 @@ operators['>='] = ge
 
 
 class Interpreter(object):
-    def __init__(self):
+    def __init__(self, dex):
+        self.dex = dex
         self.globalMemory = MemoryStack(Memory("global"))
         self.functionMemories = []
-
+       
     @on('node')
     def visit(self, node):
         pass
