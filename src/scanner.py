@@ -1,13 +1,13 @@
 from ply import lex
 
 
+
 class Scanner(object):
     def find_tok_column(self, token):
         last_cr = self.lexer.lexdata.rfind("\n", 0, token.lexpos)
         if last_cr < 0:
             last_cr = 0
         return token.lexpos - last_cr
-
 
     def build(self):
         self.lexer = lex.lex(object=self)
