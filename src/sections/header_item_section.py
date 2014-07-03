@@ -3,6 +3,7 @@ Created on 3 cze 2014
 
 @author: Przemek
 '''
+from src.items.header_item import HeaderItem
 from src.parser.measurable import Measurable
 
 
@@ -17,4 +18,6 @@ class HeaderItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
+        header_item = HeaderItem(self)
+        self.data.append(header_item)

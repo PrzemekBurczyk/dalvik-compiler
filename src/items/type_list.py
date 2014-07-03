@@ -21,7 +21,6 @@ class TypeList(Measurable):
 
         self.size = Bytes(self, 4)
         self.typeIdItem = Bytes(self, 2)
-        self.zeros = Bytes(self,
-                           2)  # the last item in parent's list doesn't have those zeros, it might be a cause of errors!
+        self.zeros = Bytes(self, 2)  # the last item in parent's list doesn't have those zeros, it might be a cause of errors!
 
-        self._data = [self.size, self.typeIdItem, self.zeros]
+        self._data = [self.size, self.typeIdItem]

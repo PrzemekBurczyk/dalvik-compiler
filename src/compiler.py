@@ -17,49 +17,6 @@ from src.sections.string_data_item_section import StringDataItemSection
 
 if __name__ == '__main__':
 
-    header = HeaderItem(None)
-    print header.getIndexOffset(3)
-    print header.getBytesCount()
-    print header.getGlobalOffset()
-
-    header.signature._data.append(Bytes(None, 1))
-
-    print header.getIndexOffset(5)
-    print header.getBytesCount()
-
-    print header.data_off.value
-    print header.data_off.bytesCount
-    print header.data_off.data
-
-    header.data_off.bytesCount = 8
-
-    print header.data_off.value
-    print header.data_off.bytesCount
-    print header.data_off.data
-
-    print header.data_off.value
-    print header.data_off.bytesCount
-    print header.data_off.data
-
-    stringId = StringIdItem(None)
-    print
-    print stringId.getBytesCount()
-    print stringId.getIndexOffset(1)
-
-    stringDataItem = StringDataItem(None)
-    print 'stringDataItem:'
-
-    string = "abcd123"
-    stringDataItem.setString(string)
-
-    print stringDataItem.utf16Size
-    print stringDataItem.string
-    for x in stringDataItem.string._data:
-        print x.value
-        print x.data
-
-    #debug data above
-
     try:
         filename = sys.argv[1] if len(sys.argv) > 1 else "example.txt"
         file = open(filename, "r")
@@ -70,13 +27,6 @@ if __name__ == '__main__':
     output = open("../test.txt", "wb")
 
     dex = Dex()
-    print "dex printItemsOffset:"
-    header = HeaderItem(None)
-    dex.header_item_section.data.append(header)
-
-    header.data_off.bytesCount = 4
-    header.data_off.value = 0x12345678
-
     dex.printItem(output)
 
     print "CParsing:"

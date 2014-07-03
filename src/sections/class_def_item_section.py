@@ -20,13 +20,13 @@ class ClassDefItemSection(Measurable):
         Measurable.__init__(self, parent)
         
         class_def_item = ClassDefItem(self)
-        class_def_item.classIdx = 0
-        class_def_item.accessFlags = 1
-        class_def_item.superclassIdx = 1
-        class_def_item.interfacesOff = 0
-        class_def_item.sourceFileIdx = 3
-        class_def_item.annotationsOff = 0
-        class_def_item.classDataOff = self.getRoot().class_data_item_section.data[0]
-        class_def_item.staticValuesOff = 0
+        class_def_item.classIdx.value = 0
+        class_def_item.accessFlags.value = 1
+        class_def_item.superclassIdx.value = 1
+        class_def_item.interfacesOff.value = 0
+        class_def_item.sourceFileIdx.value = 3
+        class_def_item.annotationsOff.value = 0
+        class_def_item.classDataOff.ref = self.getRoot().class_data_item_section.data[0]
+        class_def_item.staticValuesOff.value = 0
         
         self.data.append(class_def_item)

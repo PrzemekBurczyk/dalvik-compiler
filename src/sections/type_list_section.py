@@ -12,6 +12,11 @@ class TypeListSection(Measurable):
     classdocs
     '''
 
+    def append(self, type_list):
+        if len(self.data) > 0:
+            last_type_list = self.data[-1]
+            last_type_list.data.append(last_type_list.zeros)
+        self.data.append(type_list)
 
     def __init__(self, parent):
         '''
@@ -24,4 +29,4 @@ class TypeListSection(Measurable):
         type_list = TypeList(self)
         type_list.size.value = 1
         type_list.typeIdItem.value = 3
-        self.data.append(type_list)
+        self.append(type_list)
