@@ -28,29 +28,25 @@ class CodeItemSection(Measurable):
         code_item.insnsSize.value = 4
         
         instruction = Instruction(code_item)
-        byte = Bytes(self, 2)
-        byte.value = 0x1070
+        byte = Bytes(instruction.data, 1, 0x70)
+        instruction.data.data.append(byte)
+        byte = Bytes(instruction.data, 1, 0x10)
+        instruction.data.data.append(byte)
+        byte = Bytes(instruction.data, 1, 0x02)
+        instruction.data.data.append(byte)
+        byte = Bytes(instruction.data, 1, 0x00)
+        instruction.data.data.append(byte)
+        byte = Bytes(instruction.data, 1, 0x00)
+        instruction.data.data.append(byte)
+        byte = Bytes(instruction.data, 1, 0x00)
         instruction.data.data.append(byte)
         
         code_item.instructions.append(instruction)
         
         instruction = Instruction(code_item)
-        byte = Bytes(self, 2)
-        byte.value = 2
+        byte = Bytes(instruction.data, 1, 0x0e)
         instruction.data.data.append(byte)
-        
-        code_item.instructions.append(instruction)
-        
-        instruction = Instruction(code_item)
-        byte = Bytes(self, 2)
-        byte.value = 0
-        instruction.data.data.append(byte)
-        
-        code_item.instructions.append(instruction)
-        
-        instruction = Instruction(code_item)
-        byte = Bytes(self, 2)
-        byte.value = 0xe
+        byte = Bytes(instruction.data, 1, 0x00)
         instruction.data.data.append(byte)
         
         code_item.instructions.append(instruction)
@@ -65,8 +61,9 @@ class CodeItemSection(Measurable):
         code_item.insnsSize.value = 1
         
         instruction = Instruction(code_item)
-        byte = Bytes(self, 2)
-        byte.value = 0xe
+        byte = Bytes(instruction.data, 1, 0x0e)
+        instruction.data.data.append(byte)
+        byte = Bytes(instruction.data, 1, 0x00)
         instruction.data.data.append(byte)
         
         code_item.instructions.append(instruction)
