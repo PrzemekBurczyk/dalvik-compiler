@@ -33,7 +33,7 @@ class MapItemSection(Measurable):
         map_item.type.value = 1
         map_item.unused.value = 0
         map_item.size.value = 8
-        map_item.offset.value = 70
+        map_item.offset.value = 0x70
         
         self.data.append(map_item)
         
@@ -42,7 +42,7 @@ class MapItemSection(Measurable):
         map_item.type.value = 2
         map_item.unused.value = 0
         map_item.size.value = 4
-        map_item.offset.value = 90
+        map_item.offset.value = 0x90
         
         self.data.append(map_item)
         
@@ -93,7 +93,7 @@ class MapItemSection(Measurable):
         
         #8
         map_item = MapItem(self)
-        map_item.type.value = 02002
+        map_item.type.value = 0x2002
         map_item.unused.value = 0
         map_item.size.value = 8
         map_item.offset.value = 0x122
