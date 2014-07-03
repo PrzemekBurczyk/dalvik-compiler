@@ -3,8 +3,9 @@ from scanner import Scanner
 
 
 class Cparser(object):
-    def __init__(self):
-        self.scanner = Scanner()
+    def __init__(self, dex):
+        self.dex = dex
+        self.scanner = Scanner(dex)
         self.scanner.build()
         self.error_occured = False
 

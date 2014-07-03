@@ -1,10 +1,9 @@
+from ply import yacc
 import sys
 
-from ply import yacc
-
 from Cparser import Cparser
-from TreePrinter import TreePrinter
 from Interpreter import Interpreter
+from TreePrinter import TreePrinter
 from TypeChecker_2 import TypeChecker
 from src.items.bytes import Bytes
 from src.items.bytes_array import BytesArray
@@ -70,17 +69,10 @@ if __name__ == '__main__':
     output = open("../test.txt", "wb")
 
     dex = Dex()
-    print "dex printItemsOffset:"
-    header = HeaderItem(None)
-    dex.header_item_section.data.append(header)
-
-    header.data_off.bytesCount = 4
-    header.data_off.value = 0x12345678
-
-    dex.printItem(output)
+    #dex.printItem(output)
 
     print "CParsing:"
-    Cparser = Cparser()
+    Cparser = Cparser(dex)
     parser = yacc.yacc(module=Cparser)
     text = file.read()
     ast = parser.parse(text, lexer=Cparser.scanner)
