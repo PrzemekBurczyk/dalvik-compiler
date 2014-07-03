@@ -27,6 +27,7 @@ if __name__ == '__main__':
     output = open("../test.txt", "wb")
 
     dex = Dex()
+
     dex.printItem(output)
 
     print "CParsing:"

@@ -57,10 +57,13 @@ class Measurable(object):
         return self if self.parent is None else self.parent.getRoot()
 
     def getBytesCount(self):
-        return len(self._data._data) if isinstance(self._data, src.items.bytes.Bytes) else sum(x.getBytesCount() if isinstance(x, Measurable) else len(x) for x in self._data)
+        if isinstance(self._data, src.items.bytes.Bytes) or isinstance(self._data, src.items.bytes_array.BytesArray):
+            return len(self._data._data)
+        else:
+            bytesSum = sum(x.getBytesCount() if isinstance(x, Measurable) else sum(map(lambda y: y.getBytesCount() if isinstance(y, Measurable) else len(y), x)) for x in self._data)
+            return bytesSum
 
     def printItem(self, output):
-        print self
         if isinstance(self, src.items.bytes.Bytes):
             if self.ref is not None:
                 if self.ref == 0:
@@ -94,6 +97,7 @@ class Measurable(object):
                 else:
                     item.printItem(output)
 
+
 class BytesHaveNoItems(Exception):
     def __init__(self):
         pass
@@ -102,5 +106,3 @@ class BytesHaveNoItems(Exception):
 class ItemNotFound(Exception):
     def __init__(self):
         pass
-    
-    
