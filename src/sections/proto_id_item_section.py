@@ -20,14 +20,22 @@ class ProtoIdItemSection(Measurable):
 
     def initialize(self):
         proto_id_item = ProtoIdItem(self)
-        proto_id_item.shorty_idx.value = 4
-        proto_id_item.return_type_idx.value = 2
+        # proto_id_item.shorty_idx.value = 4
+        proto_id_item.shorty_idx.ref_type = "index"
+        proto_id_item.shorty_idx.ref = self.getRoot().string_id_item_section.data[4]
+        # proto_id_item.return_type_idx.value = 2
+        proto_id_item.return_type_idx.ref_type = "index"
+        proto_id_item.return_type_idx.ref = self.getRoot().type_id_item_section.data[2]
         proto_id_item.parameters_off.ref = 0
         self.data.append(proto_id_item)
         
         proto_id_item = ProtoIdItem(self)
-        proto_id_item.shorty_idx.value = 5
-        proto_id_item.return_type_idx.value = 2
+        # proto_id_item.shorty_idx.value = 5
+        proto_id_item.shorty_idx.ref_type = "index"
+        proto_id_item.shorty_idx.ref = self.getRoot().string_id_item_section.data[5]
+        # proto_id_item.return_type_idx.value = 2
+        proto_id_item.return_type_idx.ref_type = "index"
+        proto_id_item.return_type_idx.ref = self.getRoot().type_id_item_section.data[2]
         proto_id_item.parameters_off.ref = self.getRoot().type_list_section.data[0]
         self.data.append(proto_id_item)
         

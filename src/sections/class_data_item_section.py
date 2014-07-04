@@ -29,7 +29,8 @@ class ClassDataItemSection(Measurable):
         class_data_item.virtualMethodsSize.value = 0
         
         direct_method = DirectMethod(class_data_item)
-        direct_method.fieldIdxDiff.value = 0
+        direct_method.fieldIdxDiff.ref_type = "index"
+        direct_method.fieldIdxDiff.ref = self.getRoot().method_id_item_section.data[0]
 
         direct_method.accessFlags.data[0].value = 0x81
         direct_method.accessFlags.data.append(Bytes(direct_method, 1, 0x80))
@@ -40,7 +41,10 @@ class ClassDataItemSection(Measurable):
         class_data_item.directMethods.append(direct_method)
         
         direct_method = DirectMethod(class_data_item)
-        direct_method.fieldIdxDiff.value = 1
+
+        direct_method.fieldIdxDiff.ref_type = "index"
+        direct_method.fieldIdxDiff.ref = self.getRoot().method_id_item_section.data[1]
+
         direct_method.accessFlags.data[0].value = 0x9
         direct_method.codeOff.ref = self.getRoot().code_item_section.data[1]
         

@@ -29,5 +29,7 @@ class TypeListSection(Measurable):
         
         type_list = TypeList(self)
         type_list.size.value = 1
-        type_list.typeIdItem.value = 3
+        # type_list.typeIdItem.value = 3
+        type_list.typeIdItem.ref_type = "index"
+        type_list.typeIdItem.ref = self.getRoot().type_id_item_section.data[3]
         self.append(type_list)

@@ -75,8 +75,10 @@ class Measurable(object):
             if self.ref is not None:
                 if self.ref == 0:
                     self.value = 0
-                else:
+                elif self.ref_type == "offset":
                     self.value = self.ref.getGlobalOffset()
+                else:
+                    self.value = self.ref.parent.getItemIndex(self.ref)
             output.write(self.data)
         elif isinstance(self, src.items.bytes_array.BytesArray):
             for byte in self.data:
@@ -85,16 +87,20 @@ class Measurable(object):
             if self.data.ref is not None:
                 if self.data.ref == 0:
                     self.data.value = 0
-                else:
+                elif self.data.ref_type == "offset":
                     self.data.value = self.data.ref.getGlobalOffset()
+                else:
+                    self.data.value = self.data.ref.parent.getItemIndex(self.data.ref)
             output.write(self.data.data)
         elif isinstance(self.data, src.items.bytes_array.BytesArray):
             for byte in self.data.data:
                 if byte.ref is not None:
                     if byte.ref == 0:
                         byte.value = 0
-                    else:
+                    elif byte.ref_type == "offset":
                         byte.value = byte.ref.getGlobalOffset()
+                    else:
+                        byte.value = byte.parent.getItemIndex(byte.ref)
                 output.write(byte.data)
         else:
             for item in self.data:

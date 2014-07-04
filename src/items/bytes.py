@@ -20,6 +20,7 @@ class Bytes(Measurable):
             raise InappropriateBytesCount()
 
         self.ref = None
+        self.ref_type = "offset"  # can be also "index"
         self._bytesCount = bytesCount
         self._value = value
         self._data = struct.pack(self.bytesCountMap.get(self._bytesCount), self._value)
