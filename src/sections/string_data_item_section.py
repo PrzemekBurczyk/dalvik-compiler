@@ -17,6 +17,8 @@ class StringDataItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
+
+    def initialize(self):
         self.data.append(StringDataItem(self, "<init>"))
         self.data.append(StringDataItem(self, "LMain;"))
         self.data.append(StringDataItem(self, "Ljava/lang/Object;"))

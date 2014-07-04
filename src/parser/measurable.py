@@ -7,6 +7,7 @@ Created on 4 cze 2014
 from __builtin__ import type
 
 import src.items
+import src.parser
 import src.sections
 
 
@@ -64,6 +65,12 @@ class Measurable(object):
             return bytesSum
 
     def printItem(self, output):
+        if isinstance(self, src.parser.dex.Dex):
+            # self.header_item_section[0].checksum =
+            # self.header_item_section[0].signature =
+            self.header_item_section.data[0].data_size.value = self.header_item_section.getDataSize()
+            if self.header_item_section.data[0].data_size.value % 4 != 0:
+                print "HEADER_ITEM.DATA_SIZE SHOULD BE ALIGNED TO 4 BYTES! while it is " + str(self.header_item_section.data[0].data_size.value)
         if isinstance(self, src.items.bytes.Bytes):
             if self.ref is not None:
                 if self.ref == 0:

@@ -22,6 +22,7 @@ class CodeItemSection(Measurable):
         '''
         Measurable.__init__(self, parent)
 
+    def initialize(self):
         self.data.append(Bytes(self, 2))
         
         code_item = CodeItem(self)

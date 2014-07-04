@@ -20,7 +20,8 @@ class ClassDataItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
+    def initialize(self):
         class_data_item = ClassDataItem(self)
         class_data_item.staticFieldsSize.value = 0
         class_data_item.instanceFieldsSize.value = 0
@@ -49,10 +50,8 @@ class ClassDataItemSection(Measurable):
 
         # are those two in section or in item?
         self.zeros = Bytes(self, 2)
-        self.size = Bytes(self, 4)
-        self.size.value = 0xc
 
-        self._data + [self.size]
+        #self._data + [self.size]
 
         # @property
         #def data(self):

@@ -89,4 +89,4 @@ if __name__ == '__main__':
     except Exception:
         print "Error while printing tree or performing type-check caused by previous syntax errors."
         
-    #interpreter.dex.printItem(output)
+    interpreter.dex.printItem(output)

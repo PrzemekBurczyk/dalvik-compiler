@@ -18,4 +18,6 @@ class DebugInfoItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
+    def initialize(self):
+        pass

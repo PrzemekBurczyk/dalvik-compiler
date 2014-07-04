@@ -17,7 +17,8 @@ class ProtoIdItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
+    def initialize(self):
         proto_id_item = ProtoIdItem(self)
         proto_id_item.shorty_idx.value = 4
         proto_id_item.return_type_idx.value = 2

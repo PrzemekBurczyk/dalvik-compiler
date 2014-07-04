@@ -18,7 +18,8 @@ class MethodIdItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
+    def initialize(self):
         method_id_item = MethodIdItem(self)
         method_id_item.classIdx.value = 0
         method_id_item.protoIdx.value = 0

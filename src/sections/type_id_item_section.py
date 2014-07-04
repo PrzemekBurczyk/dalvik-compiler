@@ -18,6 +18,8 @@ class TypeIdItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
+
+    def initialize(self):
         item = TypeIdItem(self)
         item.data.value = 1
         self.data.append(item)

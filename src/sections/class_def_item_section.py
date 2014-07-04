@@ -18,7 +18,8 @@ class ClassDefItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
+    def initialize(self):
         class_def_item = ClassDefItem(self)
         class_def_item.classIdx.value = 0
         class_def_item.accessFlags.value = 1

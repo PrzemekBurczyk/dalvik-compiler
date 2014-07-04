@@ -18,6 +18,8 @@ class StringIdItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
+
+    def initialize(self):
         for i in self.getRoot().string_data_item_section.data:
             item = StringIdItem(self)
             item.data.ref = i

@@ -24,6 +24,7 @@ class TypeListSection(Measurable):
         '''
         Measurable.__init__(self, parent)
 
+    def initialize(self):
         # it holds Bytes(self, 2) between it's items! no zero bytes at the end!
         
         type_list = TypeList(self)

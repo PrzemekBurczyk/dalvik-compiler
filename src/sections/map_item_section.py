@@ -3,6 +3,7 @@ Created on 5 cze 2014
 
 @author: Przemek
 '''
+from src.items.bytes import Bytes
 
 from src.parser.measurable import Measurable
 from src.items.map_item import MapItem
@@ -18,7 +19,10 @@ class MapItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
+
+    def initialize(self):
+        self.data.append(Bytes(self, 4, 0xd))
+
         #0
         map_item = MapItem(self)
         map_item.type.value = 0
