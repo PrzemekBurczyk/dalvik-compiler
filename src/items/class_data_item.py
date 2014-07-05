@@ -5,7 +5,7 @@ Created on 5 cze 2014
 '''
 from src.items.bytes import Bytes
 from src.parser.measurable import Measurable
-from src.items.bytes_array import BytesArray
+from src.items.bytes_array import BytesArray, ULeb128
 
 
 class ClassDataItem(Measurable):
@@ -20,10 +20,10 @@ class ClassDataItem(Measurable):
         '''
         Measurable.__init__(self, parent)
 
-        self.staticFieldsSize = Bytes(self, 1)
-        self.instanceFieldsSize = Bytes(self, 1)
-        self.directMethodsSize = Bytes(self, 1)
-        self.virtualMethodsSize = Bytes(self, 1)
+        self.staticFieldsSize = ULeb128(self)
+        self.instanceFieldsSize = ULeb128(self)
+        self.directMethodsSize = ULeb128(self)
+        self.virtualMethodsSize = ULeb128(self)
         self.staticFields = []
         self.instanceFields = []
         self.directMethods = []
@@ -36,8 +36,8 @@ class ClassDataItem(Measurable):
 class Member(Measurable):
     def __init__(self, parent):
         Measurable.__init__(self, parent)
-        self.fieldIdxDiff = Bytes(self, 1)
-        self.accessFlags = BytesArray(self, 1) #Bytes was here, BytesArray for testing, but still doesnt work
+        self.fieldIdxDiff = ULeb128(self)
+        self.accessFlags = ULeb128(self)
 
         self._data = [self.fieldIdxDiff, self.accessFlags]
 
@@ -60,7 +60,7 @@ class Method(Member):
         probably we will need to hardcode it as BytesArray
         '''
         Member.__init__(self, parent)
-        self.codeOff = Bytes(self, 2)
+        self.codeOff = ULeb128(self)
 
         self._data.append(self.codeOff)
 

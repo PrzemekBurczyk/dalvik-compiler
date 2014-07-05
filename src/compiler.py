@@ -68,8 +68,9 @@ if __name__ == '__main__':
 
     output = open("../test.txt", "wb")
 
+    print "#Creating dex"
     dex = Dex()
-    #dex.printItem(output)
+    print "#Dex created"
 
     print "CParsing:"
     Cparser = Cparser()

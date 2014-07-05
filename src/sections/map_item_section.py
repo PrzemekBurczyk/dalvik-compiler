@@ -21,7 +21,7 @@ class MapItemSection(Measurable):
         Measurable.__init__(self, parent)
 
     def initialize(self):
-        self.data.append(Bytes(self, 4, 0xd))
+        self.data.append(Bytes(self, 4, 0xc))
 
         #0
         map_item = MapItem(self)
@@ -37,7 +37,7 @@ class MapItemSection(Measurable):
         map_item.type.value = 1
         map_item.unused.value = 0
         map_item.size.value = 8
-        map_item.offset.ref = self.getRoot().string_data_item_section.data[0]
+        map_item.offset.ref = self.getRoot().string_id_item_section
         
         self.data.append(map_item)
         
@@ -46,7 +46,7 @@ class MapItemSection(Measurable):
         map_item.type.value = 2
         map_item.unused.value = 0
         map_item.size.value = 4
-        map_item.offset.ref = self.getRoot().type_list_section.data[0]
+        map_item.offset.ref = self.getRoot().type_id_item_section
         
         self.data.append(map_item)
         
@@ -55,7 +55,7 @@ class MapItemSection(Measurable):
         map_item.type.value = 3
         map_item.unused.value = 0
         map_item.size.value = 2
-        map_item.offset.ref = self.getRoot().proto_id_item_section.data[0]
+        map_item.offset.ref = self.getRoot().proto_id_item_section
         
         self.data.append(map_item)
 
@@ -73,7 +73,7 @@ class MapItemSection(Measurable):
         map_item.type.value = 5
         map_item.unused.value = 0
         map_item.size.value = 3
-        map_item.offset.ref = self.getRoot().method_id_item_section.data[0]
+        map_item.offset.ref = self.getRoot().method_id_item_section
         
         self.data.append(map_item)
         
@@ -82,7 +82,7 @@ class MapItemSection(Measurable):
         map_item.type.value = 6
         map_item.unused.value = 0
         map_item.size.value = 1
-        map_item.offset.ref = self.getRoot().class_def_item_section.data[0]
+        map_item.offset.ref = self.getRoot().class_def_item_section
         
         self.data.append(map_item)
         
@@ -91,7 +91,7 @@ class MapItemSection(Measurable):
         map_item.type.value = 0x2001
         map_item.unused.value = 0
         map_item.size.value = 2
-        map_item.offset.ref = self.getRoot().code_item_section.data[0]
+        map_item.offset.ref = self.getRoot().code_item_section
         
         self.data.append(map_item)
         
@@ -100,7 +100,7 @@ class MapItemSection(Measurable):
         map_item.type.value = 0x1001
         map_item.unused.value = 0
         map_item.size.value = 1
-        map_item.offset.ref = self.getRoot().type_list_section.data[0]
+        map_item.offset.ref = self.getRoot().type_list_section
         
         self.data.append(map_item)
         
@@ -109,7 +109,7 @@ class MapItemSection(Measurable):
         map_item.type.value = 0x2002
         map_item.unused.value = 0
         map_item.size.value = 8
-        map_item.offset.ref = self.getRoot().string_data_item_section.data[0]
+        map_item.offset.ref = self.getRoot().string_data_item_section
         
         self.data.append(map_item)
         
@@ -127,7 +127,7 @@ class MapItemSection(Measurable):
         map_item.type.value = 0x2000
         map_item.unused.value = 0
         map_item.size.value = 1
-        map_item.offset.ref = self.getRoot().class_data_item_section.data[0]
+        map_item.offset.ref = self.getRoot().class_data_item_section
         
         self.data.append(map_item)
         

@@ -45,5 +45,3 @@ class Instruction(Measurable):
         Measurable.__init__(self, parent)
 
         self._data = BytesArray(self, 0)
-        
-        

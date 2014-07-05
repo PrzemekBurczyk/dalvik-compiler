@@ -1,9 +1,10 @@
 import struct
 
 from src.parser.measurable import Measurable
+from src.parser.reference import Reference
 
 
-class Bytes(Measurable):
+class Bytes(Measurable, Reference):
     def __init__(self, parent, bytesCount, value=0):
         '''
         B 1 byte unsigned
@@ -12,6 +13,7 @@ class Bytes(Measurable):
         Q 8 bytes unsigned
         '''
         Measurable.__init__(self, parent)
+        Reference.__init__(self)
 
         # print "Bytes parent: " + str(parent)
 
@@ -19,8 +21,6 @@ class Bytes(Measurable):
         if not bytesCount in self.bytesCountMap:
             raise InappropriateBytesCount()
 
-        self.ref = None
-        self.ref_type = "offset"  # can be also "index"
         self._bytesCount = bytesCount
         self._value = value
         self._data = struct.pack(self.bytesCountMap.get(self._bytesCount), self._value)
