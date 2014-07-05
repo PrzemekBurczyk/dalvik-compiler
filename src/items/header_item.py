@@ -22,7 +22,7 @@ class HeaderItem(Measurable):
         Measurable.__init__(self, parent)
 
         self.magic = BytesArray(self, 8)
-        self.checksum = BytesArray(self, 4)
+        self.checksum = Bytes(self, 4)
         self.signature = BytesArray(self, 20)
         self.file_size = Bytes(self, 4)
         self.header_size = Bytes(self, 4)
