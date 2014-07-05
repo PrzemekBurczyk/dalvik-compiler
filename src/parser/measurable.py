@@ -167,7 +167,12 @@ class Measurable(object):
                 else:
                     self.data.value = self.data.ref.parent.getItemIndex(self.data.ref)
         else:
+            if isinstance(self, src.parser.dex.Dex):
+                self.class_data_item_section.evaluateReferences()
+                # evaluate class data item section first, as it has variable length data
             for item in self.data[::-1]:
+                if isinstance(self, src.parser.dex.Dex) and isinstance(item, src.sections.class_data_item_section.ClassDataItemSection):
+                    continue
                 if isinstance(item, list):
                     for subitem in item[::-1]:
                         subitem.evaluateReferences()
