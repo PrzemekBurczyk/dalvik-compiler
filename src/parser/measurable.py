@@ -96,42 +96,14 @@ class Measurable(object):
 
     def getSignature(self, sha1):
         if isinstance(self, src.items.bytes.Bytes):
-            # if isinstance(self, Reference) and self.ref is not None:
-            #     if self.ref == 0:
-            #         self.value = 0
-            #     elif self.ref_type == "offset":
-            #         self.value = self.ref.getGlobalOffset()
-            #     else:
-            #         self.value = self.ref.parent.getItemIndex(self.ref)
             sha1.update(self.data)
         elif isinstance(self, src.items.bytes_array.BytesArray):
-            # if isinstance(self, Reference) and self.ref is not None:
-            #     if self.ref == 0:
-            #         self.value = 0
-            #     elif self.ref_type == "offset":
-            #         self.value = self.ref.getGlobalOffset()
-            #     else:
-            #         self.value = self.ref.parent.getItemIndex(self.ref)
             for byte in self.data:
                 sha1.update(byte.data)
         elif isinstance(self.data, src.items.bytes.Bytes):
-            # if isinstance(self.data, Reference) and self.data.ref is not None:
-            #     if self.data.ref == 0:
-            #         self.data.value = 0
-            #     elif self.data.ref_type == "offset":
-            #         self.data.value = self.data.ref.getGlobalOffset()
-            #     else:
-            #         self.data.value = self.data.ref.parent.getItemIndex(self.data.ref)
             sha1.update(self.data.data)
         elif isinstance(self.data, src.items.bytes_array.BytesArray):
             for byte in self.data.data:
-                # if isinstance(byte, Reference) and byte.ref is not None:
-                #     if byte.ref == 0:
-                #         byte.value = 0
-                #     elif byte.ref_type == "offset":
-                #         byte.value = byte.ref.getGlobalOffset()
-                #     else:
-                #         byte.value = byte.parent.getItemIndex(byte.ref)
                 sha1.update(byte.data)
         else:
             if isinstance(self, src.items.header_item.HeaderItem):
@@ -186,6 +158,10 @@ class Measurable(object):
             file_size = self.getBytesCount()
             self.header_item_section.data[0].file_size.value = file_size
 
+            self.header_item_section.data[0].data_size.value = self.header_item_section.getDataSize()
+            if self.header_item_section.data[0].data_size.value % 4 != 0:
+                print "HEADER_ITEM.DATA_SIZE SHOULD BE ALIGNED TO 4 BYTES! while it is " + str(self.header_item_section.data[0].data_size.value)
+
             sha1 = hashlib.sha1()
             self.getSignature(sha1)
             digest = sha1.digest()
@@ -195,10 +171,6 @@ class Measurable(object):
             buf = []
             self.getChecksum(buf)
             self.header_item_section.data[0].checksum.value = zlib.adler32("".join(buf)) & 0xffffffff
-
-            self.header_item_section.data[0].data_size.value = self.header_item_section.getDataSize()
-            if self.header_item_section.data[0].data_size.value % 4 != 0:
-                print "HEADER_ITEM.DATA_SIZE SHOULD BE ALIGNED TO 4 BYTES! while it is " + str(self.header_item_section.data[0].data_size.value)
 
         if isinstance(self, src.items.bytes.Bytes):
             output.write(self.data)
