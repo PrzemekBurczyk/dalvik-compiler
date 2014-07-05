@@ -30,6 +30,7 @@ class CodeItemSection(Measurable):
         code_item.insSize.value = 1
         code_item.outsSize.value = 1
         code_item.triesSize.value = 0
+        code_item.debugInfoOff.value = 0x173
         code_item.insnsSize.value = 4
         
         instruction = Instruction(code_item)
@@ -63,6 +64,7 @@ class CodeItemSection(Measurable):
         code_item.insSize.value = 1
         code_item.outsSize.value = 0
         code_item.triesSize.value = 0
+        code_item.debugInfoOff.value = 0x178
         code_item.insnsSize.value = 1
         
         instruction = Instruction(code_item)
