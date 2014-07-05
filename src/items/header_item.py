@@ -52,8 +52,3 @@ class HeaderItem(Measurable):
                       self.proto_ids_size, self.proto_ids_off, self.field_ids_size, self.field_ids_off,
                       self.method_ids_size,
                       self.method_ids_off, self.class_defs_size, self.class_defs_off, self.data_size, self.data_off]
-
-    def calculateSha1(self, data):
-        sha1 = hashlib.sha1()
-        sha1.update(data)
-        return hash.digest()
