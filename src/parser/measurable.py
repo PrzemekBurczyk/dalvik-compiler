@@ -34,9 +34,6 @@ class Measurable(object):
     @property
     def parent(self):
         return self._parent
-    
-    def clearData(self):
-        self._data = []
 
     def getIndexOffset(self, index):
         if isinstance(self, src.items.bytes.Bytes) or isinstance(self, src.items.bytes_array.BytesArray):

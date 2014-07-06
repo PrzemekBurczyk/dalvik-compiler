@@ -78,9 +78,9 @@ class Dex(Measurable):
         
     def addString(self, stringToAdd):
         
-        self.string_data_item_section.addAndSortStrings(stringToAdd)
+        ref_to_string = self.string_data_item_section.addAndSortStrings(stringToAdd)
         
-        self.string_id_item_section.initialize()
+        self.string_id_item_section.addStringIdItem(ref_to_string)
         
         
         
