@@ -17,13 +17,16 @@ class StringDataItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-
+        
     def initialize(self):
-        self.data.append(StringDataItem(self, "<init>"))
-        self.data.append(StringDataItem(self, "LMain;"))
-        self.data.append(StringDataItem(self, "Ljava/lang/Object;"))
-        self.data.append(StringDataItem(self, "Main.java"))
-        self.data.append(StringDataItem(self, "V"))
-        self.data.append(StringDataItem(self, "VL"))
-        self.data.append(StringDataItem(self, "[Ljava/lang/String;"))
-        self.data.append(StringDataItem(self, "main"))
+        pass
+
+    def addAndSortStrings(self, stringToAdd):
+        self.data.append(StringDataItem(self, stringToAdd))
+        if len(self.data):
+            self.data.sort(cmp=None, key=lambda x: x.rawString, reverse=False)
+
+        #print "---StringDataItemSection data:"
+        #for x in self.data:
+        #    print x.rawString
+        #print "---end of strinfDataItemSection"

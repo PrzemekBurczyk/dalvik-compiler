@@ -17,6 +17,7 @@ from src.sections.string_data_item_section import StringDataItemSection
 from src.sections.string_id_item_section import StringIdItemSection
 from src.sections.type_id_item_section import TypeIdItemSection
 from src.sections.type_list_section import TypeListSection
+from src.items.string_data_item import StringDataItem
 
 
 class Dex(Measurable):
@@ -46,12 +47,11 @@ class Dex(Measurable):
         self.map_item_section = MapItemSection(self)
 
         self.header_item_section.initialize()
-        self.string_data_item_section.initialize()
-        self.string_id_item_section.initialize()
+        self.initializeStringDataAndIdSections()
         # data section has to be eariler, id section initializes with references
         self.type_id_item_section.initialize()
         self.type_list_section.initialize()
-        self.proto_id_item_section.initialize()
+        self.proto_id_item_section.initialize() 
         self.field_id_item_section.initialize()
         self.method_id_item_section.initialize()
         self.code_item_section.initialize()
@@ -65,3 +65,33 @@ class Dex(Measurable):
                       self.class_def_item_section,
                       self.code_item_section, self.type_list_section, self.string_data_item_section,
                       self.debug_info_item_section, self.class_data_item_section, self.map_item_section]
+    
+    def initializeStringDataAndIdSections(self):
+        self.addString("<init>")
+        self.addString("V")
+        self.addString("main")
+        self.addString("LMain;")
+        self.addString("Ljava/lang/Object;")
+        self.addString("Main.java")
+        self.addString("VL")
+        self.addString("[Ljava/lang/String;")
+        
+    def addString(self, stringToAdd):
+        
+        self.string_data_item_section.addAndSortStrings(stringToAdd)
+        
+        self.string_id_item_section.initialize()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
