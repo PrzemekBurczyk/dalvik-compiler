@@ -43,8 +43,3 @@ class ClassDataItemSection(Measurable):
         class_data_item.directMethods.append(direct_method)
         
         self.data.append(class_data_item)
-
-        # zeros may be needed to have good alignment (to 4 bytes)
-        self.zeros = Bytes(self, 2)
-
-        #self._data + [self.size]

@@ -39,6 +39,7 @@ class ULeb128(BytesArray, Reference):
     @value.setter
     def value(self, value):
         self._value = value
+        self._data = []
         self.setValue(value)
 
     def setValue(self, value):

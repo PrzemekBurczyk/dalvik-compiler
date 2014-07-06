@@ -159,12 +159,19 @@ class Measurable(object):
         if isinstance(self, src.parser.dex.Dex):
             self.evaluateReferences()
 
-            file_size = self.getBytesCount()
-            self.header_item_section.data[0].file_size.value = file_size
+            data_size = self.header_item_section.getDataSize()
+            if data_size % 4 != 0:
+                self.class_data_item_section.data.append(src.items.bytes_array.BytesArray(self.class_data_item_section, 4 - (data_size % 4)))
 
             self.header_item_section.data[0].data_size.value = self.header_item_section.getDataSize()
             if self.header_item_section.data[0].data_size.value % 4 != 0:
                 print "HEADER_ITEM.DATA_SIZE SHOULD BE ALIGNED TO 4 BYTES! while it is " + str(self.header_item_section.data[0].data_size.value)
+
+            # need to evaluate references as offsets may change
+            self.evaluateReferences()
+
+            file_size = self.getBytesCount()
+            self.header_item_section.data[0].file_size.value = file_size
 
             sha1 = hashlib.sha1()
             self.getSignature(sha1)
