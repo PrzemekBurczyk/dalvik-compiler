@@ -18,5 +18,4 @@ class TypeIdItem(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-
         self._data = Bytes(self, 4)

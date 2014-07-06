@@ -155,6 +155,7 @@ class Measurable(object):
                     item.evaluateReferences()
 
     def printItem(self, output):
+        print self
         if isinstance(self, src.parser.dex.Dex):
             self.evaluateReferences()
 

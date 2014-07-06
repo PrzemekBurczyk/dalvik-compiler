@@ -20,7 +20,8 @@ class StringDataItem(Measurable):
         Measurable.__init__(self, parent)
         self.utf16Size = Bytes(self, 1)
         self.string = BytesArray(self, 0)  # it is data from dump, but name is already reserved
-        self._data = [self.utf16Size, self.string]
+        self.rawString = string
+        self._data = [self.utf16Size, self.string, self.rawString]
         self.rawString = string
         self.setString(string)
 
