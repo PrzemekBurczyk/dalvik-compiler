@@ -46,7 +46,7 @@ class HeaderItemSection(Measurable):
         header_item.proto_ids_size.value = 2
         header_item.proto_ids_off.ref = self.getRoot().proto_id_item_section
         header_item.field_ids_size.value = 0
-        header_item.field_ids_off.ref = self.getRoot().field_id_item_section
+        # header_item.field_ids_off.ref = self.getRoot().field_id_item_section
         header_item.method_ids_size.value = 3
         header_item.method_ids_off.ref = self.getRoot().method_id_item_section
         header_item.class_defs_size.value = 1
