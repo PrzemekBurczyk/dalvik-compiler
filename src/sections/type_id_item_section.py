@@ -12,7 +12,6 @@ class TypeIdItemSection(Measurable):
     classdocs
     '''
 
-
     def __init__(self, parent):
         '''
         Constructor
@@ -20,10 +19,10 @@ class TypeIdItemSection(Measurable):
         Measurable.__init__(self, parent)
 
     def initialize(self):
-        self.addTypeIdItemAndSort("LMain;");
-        self.addTypeIdItemAndSort("Ljava/lang/Object;");
-        self.addTypeIdItemAndSort("[Ljava/lang/String;");#this one should be added as a fourth one, different order only for testing
-        self.addTypeIdItemAndSort("V");
+        self.addTypeIdItemAndSort("LMain;")
+        self.addTypeIdItemAndSort("Ljava/lang/Object;")
+        self.addTypeIdItemAndSort("V")
+        self.addTypeIdItemAndSort("[Ljava/lang/String;")
         
     def addTypeIdItemAndSort(self, typeStringName):
         string_id = 0
@@ -35,8 +34,7 @@ class TypeIdItemSection(Measurable):
         item.data.ref_type = "index"
         item.data.ref = self.getRoot().string_id_item_section.data[string_id]
         self.data.append(item)
-        
-        
+
         if len(self.data):
             self.data.sort(cmp=None, key=lambda x: self.getRoot().string_id_item_section.getItemIndex(x.data.ref), reverse=False)
         

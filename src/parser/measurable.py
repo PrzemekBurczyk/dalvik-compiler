@@ -152,7 +152,6 @@ class Measurable(object):
                     item.evaluateReferences()
 
     def printItem(self, output):
-        print self
         if isinstance(self, src.parser.dex.Dex):
             self.evaluateReferences()
 
@@ -166,6 +165,26 @@ class Measurable(object):
 
             # need to evaluate references as offsets may change
             self.evaluateReferences()
+
+            self.header_item_section.data[0].string_ids_size.value = len(self.string_id_item_section.data)
+            self.map_item_section.data[2].size.value = len(self.string_id_item_section.data)
+
+            self.header_item_section.data[0].type_ids_size.value = len(self.type_id_item_section.data)
+            self.map_item_section.data[3].size.value = len(self.type_id_item_section.data)
+
+            self.header_item_section.data[0].proto_ids_size.value = len(self.proto_id_item_section.data)
+            self.map_item_section.data[4].size.value = len(self.proto_id_item_section.data)
+
+            self.header_item_section.data[0].field_ids_size.value = len(self.field_id_item_section.data)
+            self.map_item_section.data[5].size.value = len(self.field_id_item_section.data)
+            if len(self.field_id_item_section.data) == 0:
+                self.map_item_section.data[5].offset.value = 0
+
+            self.header_item_section.data[0].method_ids_size.value = len(self.method_id_item_section.data)
+            self.map_item_section.data[6].size.value = len(self.method_id_item_section.data)
+
+            self.header_item_section.data[0].class_defs_size.value = len(self.class_def_item_section.data)
+            self.map_item_section.data[7].size.value = len(self.class_def_item_section.data)
 
             file_size = self.getBytesCount()
             self.header_item_section.data[0].file_size.value = file_size

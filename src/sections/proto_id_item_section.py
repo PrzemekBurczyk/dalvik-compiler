@@ -38,4 +38,3 @@ class ProtoIdItemSection(Measurable):
         proto_id_item.return_type_idx.ref = self.getRoot().type_id_item_section.data[2]
         proto_id_item.parameters_off.ref = self.getRoot().type_list_section.data[0]
         self.data.append(proto_id_item)
-        
