@@ -151,54 +151,63 @@ class Measurable(object):
                 else:
                     item.evaluateReferences()
 
+    def preprocess(self, dex):
+        dex.evaluateReferences()
+
+        idxOffset = 0
+        if len(dex.field_id_item_section.data) == 0:
+            dex.header_item_section.data[0].field_ids_off.value = 0
+            dex.header_item_section.data[0].field_ids_off.ref = None
+            dex.map_item_section.data[0].value = dex.map_item_section.data[0]._value - 1
+            del dex.map_item_section.data[5]
+            idxOffset = -1
+
+        data_size = dex.header_item_section.getDataSize()
+        if data_size % 4 != 0:
+            dex.class_data_item_section.data.append(src.items.bytes_array.BytesArray(dex.class_data_item_section, 4 - (data_size % 4)))
+
+        dex.header_item_section.data[0].data_size.value = dex.header_item_section.getDataSize()
+        if dex.header_item_section.data[0].data_size.value % 4 != 0:
+            print "HEADER_ITEM.DATA_SIZE SHOULD BE ALIGNED TO 4 BYTES! while it is " + str(dex.header_item_section.data[0].data_size.value)
+
+        # need to evaluate references as offsets may change
+        dex.evaluateReferences()
+
+        dex.header_item_section.data[0].string_ids_size.value = len(dex.string_id_item_section.data)
+        dex.map_item_section.data[2].size.value = len(dex.string_id_item_section.data)
+
+        dex.header_item_section.data[0].type_ids_size.value = len(dex.type_id_item_section.data)
+        dex.map_item_section.data[3].size.value = len(dex.type_id_item_section.data)
+
+        dex.header_item_section.data[0].proto_ids_size.value = len(dex.proto_id_item_section.data)
+        dex.map_item_section.data[4].size.value = len(dex.proto_id_item_section.data)
+
+        if len(dex.field_id_item_section.data) != 0:
+            dex.header_item_section.data[0].field_ids_size.value = len(dex.field_id_item_section.data)
+            dex.map_item_section.data[5].size.value = len(dex.field_id_item_section.data)
+
+        dex.header_item_section.data[0].method_ids_size.value = len(dex.method_id_item_section.data)
+        dex.map_item_section.data[6 + idxOffset].size.value = len(dex.method_id_item_section.data)
+
+        dex.header_item_section.data[0].class_defs_size.value = len(dex.class_def_item_section.data)
+        dex.map_item_section.data[7 + idxOffset].size.value = len(dex.class_def_item_section.data)
+
+        file_size = dex.getBytesCount()
+        dex.header_item_section.data[0].file_size.value = file_size
+
+        sha1 = hashlib.sha1()
+        dex.getSignature(sha1)
+        digest = sha1.digest()
+        for i in range(20):
+            dex.header_item_section.data[0].signature.data[i] = src.items.bytes.Bytes(dex.header_item_section.data[0].signature, 1, int(digest[i].encode('hex'), 16))
+
+        buf = []
+        dex.getChecksum(buf)
+        dex.header_item_section.data[0].checksum.value = zlib.adler32("".join(buf)) & 0xffffffff
+
     def printItem(self, output):
         if isinstance(self, src.parser.dex.Dex):
-            self.evaluateReferences()
-
-            data_size = self.header_item_section.getDataSize()
-            if data_size % 4 != 0:
-                self.class_data_item_section.data.append(src.items.bytes_array.BytesArray(self.class_data_item_section, 4 - (data_size % 4)))
-
-            self.header_item_section.data[0].data_size.value = self.header_item_section.getDataSize()
-            if self.header_item_section.data[0].data_size.value % 4 != 0:
-                print "HEADER_ITEM.DATA_SIZE SHOULD BE ALIGNED TO 4 BYTES! while it is " + str(self.header_item_section.data[0].data_size.value)
-
-            # need to evaluate references as offsets may change
-            self.evaluateReferences()
-
-            self.header_item_section.data[0].string_ids_size.value = len(self.string_id_item_section.data)
-            self.map_item_section.data[2].size.value = len(self.string_id_item_section.data)
-
-            self.header_item_section.data[0].type_ids_size.value = len(self.type_id_item_section.data)
-            self.map_item_section.data[3].size.value = len(self.type_id_item_section.data)
-
-            self.header_item_section.data[0].proto_ids_size.value = len(self.proto_id_item_section.data)
-            self.map_item_section.data[4].size.value = len(self.proto_id_item_section.data)
-
-            self.header_item_section.data[0].field_ids_size.value = len(self.field_id_item_section.data)
-            self.map_item_section.data[5].size.value = len(self.field_id_item_section.data)
-            if len(self.field_id_item_section.data) == 0:
-                self.map_item_section.data[5].offset.value = 0
-
-            self.header_item_section.data[0].method_ids_size.value = len(self.method_id_item_section.data)
-            self.map_item_section.data[6].size.value = len(self.method_id_item_section.data)
-
-            self.header_item_section.data[0].class_defs_size.value = len(self.class_def_item_section.data)
-            self.map_item_section.data[7].size.value = len(self.class_def_item_section.data)
-
-            file_size = self.getBytesCount()
-            self.header_item_section.data[0].file_size.value = file_size
-
-            sha1 = hashlib.sha1()
-            self.getSignature(sha1)
-            digest = sha1.digest()
-            for i in range(20):
-                self.header_item_section.data[0].signature.data[i] = src.items.bytes.Bytes(self.header_item_section.data[0].signature, 1, int(digest[i].encode('hex'), 16))
-
-            buf = []
-            self.getChecksum(buf)
-            self.header_item_section.data[0].checksum.value = zlib.adler32("".join(buf)) & 0xffffffff
-
+            self.preprocess(self)
         if isinstance(self, src.items.bytes.Bytes):
             output.write(self.data)
         elif isinstance(self, src.items.bytes_array.BytesArray):

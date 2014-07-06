@@ -21,7 +21,7 @@ class MapItemSection(Measurable):
         Measurable.__init__(self, parent)
 
     def initialize(self):
-        self.data.append(Bytes(self, 4, 0xb))
+        self.data.append(Bytes(self, 4, 0xc))
 
         #0
         map_item = MapItem(self)
