@@ -18,16 +18,19 @@ class StringIdItemSection(Measurable):
         Constructor
         '''
         Measurable.__init__(self, parent)
-        
-
+    
     def initialize(self):
-        self.clearData()
-        for i in self.getRoot().string_data_item_section.data:
-            item = StringIdItem(self)
-            item.data.ref = i
-            self.data.append(item)
+        pass
+
+    def addStringIdItem(self, string_data_item):
+        item = StringIdItem(self)
+        item.data.ref = string_data_item
+        self.data.append(item)
+        
+        if len(self.data):
+            self.data.sort(cmp=None, key=lambda x: x.data.ref.rawString, reverse=False)
         
         #print "refs from string_id_item sections:"
         #for item in self.data:
-        #    print item.data.ref
+        #    print item.data.ref.rawString
         

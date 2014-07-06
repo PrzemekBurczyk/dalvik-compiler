@@ -22,10 +22,12 @@ class StringDataItemSection(Measurable):
         pass
 
     def addAndSortStrings(self, stringToAdd):
-        self.data.append(StringDataItem(self, stringToAdd))
+        string_data_item = StringDataItem(self, stringToAdd)
+        self.data.append(string_data_item)
         if len(self.data):
             self.data.sort(cmp=None, key=lambda x: x.rawString, reverse=False)
 
+        return string_data_item
         #print "---StringDataItemSection data:"
         #for x in self.data:
         #    print x.rawString

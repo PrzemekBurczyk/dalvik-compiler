@@ -21,7 +21,7 @@ class StringDataItem(Measurable):
         self.utf16Size = Bytes(self, 1)
         self.string = BytesArray(self, 0)  # it is data from dump, but name is already reserved
         self.rawString = string
-        self._data = [self.utf16Size, self.string, self.rawString]
+        self._data = [self.utf16Size, self.string]
         self.rawString = string
         self.setString(string)
 
