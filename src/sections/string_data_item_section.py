@@ -21,7 +21,8 @@ class StringDataItemSection(Measurable):
     def initialize(self):
         pass
 
-    def sortStrings(self):
+    def addAndSortStrings(self, stringToAdd):
+        self.data.append(StringDataItem(self, stringToAdd))
         if len(self.data):
             self.data.sort(cmp=None, key=lambda x: x.rawString, reverse=False)
 

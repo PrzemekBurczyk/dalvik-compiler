@@ -67,19 +67,18 @@ class Dex(Measurable):
                       self.debug_info_item_section, self.class_data_item_section, self.map_item_section]
     
     def initializeStringDataAndIdSections(self):
-        self.addString(StringDataItem(self.string_data_item_section, "<init>"))
-        self.addString(StringDataItem(self.string_data_item_section, "V"))
-        self.addString(StringDataItem(self.string_data_item_section, "main"))
-        self.addString(StringDataItem(self.string_data_item_section, "LMain;"))
-        self.addString(StringDataItem(self.string_data_item_section, "Ljava/lang/Object;"))
-        self.addString(StringDataItem(self.string_data_item_section, "Main.java"))
-        self.addString(StringDataItem(self.string_data_item_section, "VL"))
-        self.addString(StringDataItem(self.string_data_item_section, "[Ljava/lang/String;"))
+        self.addString("<init>")
+        self.addString("V")
+        self.addString("main")
+        self.addString("LMain;")
+        self.addString("Ljava/lang/Object;")
+        self.addString("Main.java")
+        self.addString("VL")
+        self.addString("[Ljava/lang/String;")
         
     def addString(self, stringToAdd):
         
-        self.string_data_item_section.data.append(stringToAdd)
-        self.string_data_item_section.sortStrings()
+        self.string_data_item_section.addAndSortStrings(stringToAdd)
         
         self.string_id_item_section.initialize()
         
